@@ -24,9 +24,9 @@ export default class CardsPage extends Page {
         if (!cardInfo) return;
 
         // Skip cost for heroes.
-        if (!card.classList.contains('hero')) {
-          addStat('cost', cardInfo, properties);
-        }
+        // if (!card.classList.contains('hero')) {
+        //   addStat('cost', cardInfo, properties);
+        // }
 
         // if (card.classList.contains('hero') || card.classList.contains('unit') || card.classList.contains('equip') || card.classList.contains('token')) {
         //   addStat('atk', cardInfo, properties, true);

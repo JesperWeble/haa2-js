@@ -28,13 +28,13 @@ export default class CardsPage extends Page {
           addStat('cost', cardInfo, properties);
         }
 
-        if (card.classList.contains('hero') || card.classList.contains('unit') || card.classList.contains('equip')) {
+        if (card.classList.contains('hero') || card.classList.contains('unit') || card.classList.contains('equip') || card.classList.contains('token')) {
           addStat('atk', cardInfo, properties, true);
         }
-        if (card.classList.contains('hero') || card.classList.contains('unit')) {
+        if (card.classList.contains('hero') || card.classList.contains('unit') || card.classList.contains('token')) {
           addStat('health', cardInfo, properties);
         }
-        if (card.classList.contains('equip')) {
+        if (card.classList.contains('equip') || card.classList.contains('token') || card.classList.contains('member')) {
           addStat('dur', cardInfo, properties);
         }
         addStat('source', cardInfo, properties);

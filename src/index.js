@@ -5,9 +5,9 @@ let currentPage;
 const fullCardInfoUpdater = new FullCardInfoUpdater();
 
 function executeRoute(url) {
-  // if (url.includes('/cards')) {
-  //   currentPage = new CardsPage();
-  // }
+  if (url.includes('/cards')) {
+    currentPage = new CardsPage();
+  }
   if (url.includes('/decks')) {
     currentPage = new CollectionPage();
   }

@@ -4,8 +4,8 @@ import MarketPage from "./market";
 import SetsPage from './sets';
 
 export {
-  CardsPage,
-  CollectionPage,
+  // CardsPage,
+  // CollectionPage,
   MarketPage,
   SetsPage,
 }

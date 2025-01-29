@@ -1,0 +1,4313 @@
+// Welcome to the example CSS file for the template. CSS is a powerful styling tool that lets you customize the overall look and feel of your game. Dulst ships with DEFAULT CSS that forms the basis of every game, and every game can overwrite that default CSS with this file.
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap')
+@import url(https://db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift)
+
+:root
+  font-size 16px
+
+/*
+ * Options. Here we define some variables for the colors in our game. These variables will be used further down in the CSS.
+ */
+
+// Basic Colors.
+statBgColor = rgba(0, 0, 0, .75)
+statTextColor = rgba(255, 255, 255, 1)
+atkColor = rgba(221, 203, 0, 1)
+healthColor = rgba(229, 80, 80, 1)
+durColor = rgba(173, 173, 173, 1)
+costColor = rgba(195, 223, 255, 1)
+twistColor = rgba(255, 64, 235, 1)
+powerColor = rgba(235, 224, 83, 1)
+eligibilityColor = rgba(0, 255, 0, 1)
+curseColor = rgba(155, 0, 255, 1)
+activeColor = rgba(255, 125, 25, 1)
+eligibilityHasteColor = rgba(255, 128, 0, 1)
+summoningSicknessColor = rgba(30, 216, 83, 1)
+legacySkullColor = #FBFCFC
+auraUnitColor = #FFFF30
+lightBorderGradientColor = #49e0f4
+darkBorderGradientColor = #266aff
+stunColor = #FFFF30
+stunShadowColor = rgba(0,0,0,.75)
+
+//// Dictionary of preview URL's
+previewCards = {
+  HeroSkinHighTide: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5g04huo_ultra.JPG)
+  HeroSkinAmaLee: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g699bshk_AmaLee.JPG)
+  HeroSkinFulgur: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g63ml2d0_Fulgur.JPG)
+  HeroSkinDeath: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5dqttge_Death.JPG)
+  HeroSkinFinanaRyugu: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g4tud7db_Finana.JPG)
+  HeroSkinHatsuneMiku: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g570t2b2_Hatsun.JPG)
+  HeroSkinReflectedGura: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g4ie0v9f_Gawr_Gur2a.JPG)
+  Bike: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g6vjlhud_Bike.JPG)
+  SharkGuard: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g6303hjm_Shark_Guard.JPG)
+  LunaGuardian: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5nmtv2m_Lunas_Guardian.JPG)
+  Koro: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5oj5kdh_Koro.JPG)
+  MegaKorone: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g4o7eeil_Korone.JPG)
+  Soldier: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g4bukhd7_Soldier.JPG)
+  WolfBird: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g6346ffb_Wolf_Bird.JPG)
+  Wolf: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g4bukt20_Wolf.JPG)
+  "35P": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g7ukr589_35P.JPG)
+  RangersGuile: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i37o6g66___2024-07-20_15-39-53.png)
+}
+
+// Class Colors. To add a new class, simply add another entry to the hash below. Multi-class cards will automatically be a mix of the classes.
+classColors = {
+  Idol: rgb(255, 255, 25)
+  Madoushi: rgb(255, 25, 255)
+  Banchou: rgb(255, 55, 55)
+  Senshi: rgb(255, 125, 25)
+  Gunshi: rgb(0, 50, 255)
+  Okashii: rgb(125, 255, 25)
+  Anti: rgb(175, 0, 0)
+  Fan: rgb(220, 195, 250)
+  All: rgb(255, 255, 255)
+}
+
+cardTitleColorRules = {
+  Banchou: {
+    backgroundColor: rgba(169, 50, 38, 0.8),
+    backgroundJoinColor: rgba(241, 148, 138, 0.3),
+    topBorderColor: #E74C3C,
+    bottomBorderColor: #922B21
+  },
+  Gunshi: {
+    backgroundColor: rgba(33, 97, 140, 0.8),
+    backgroundJoinColor: rgba(93, 173, 226, 0.3),
+    topBorderColor: #5DADE2,
+    bottomBorderColor: #1B4F72
+  },
+  Senshi: {
+    backgroundColor: rgba(202, 111, 30, 0.8),
+    backgroundJoinColor: rgba(240, 178, 122, 0.3),
+    topBorderColor: #F5B041,
+    bottomBorderColor: #AF601A
+  },
+  Idol: {
+    backgroundColor: rgba(244, 208, 63, 0.8),
+    backgroundJoinColor: rgba(252, 243, 207, 0.3),
+    topBorderColor: #F9E79F,
+    bottomBorderColor: #B7950B
+  },
+  Madoushi: {
+    backgroundColor: rgba(136, 78, 160, 0.8),
+    backgroundJoinColor: rgba(215, 189, 226, 0.3),
+    topBorderColor: #C987C9,
+    bottomBorderColor: #5B2C6F
+  },
+  Okashii: {
+    backgroundColor: rgba(34, 153, 84, 0.8),
+    backgroundJoinColor: rgba(249, 231, 159, 0.3),
+    topBorderColor: #7dff19,
+    bottomBorderColor: #229954
+  }
+}
+cardTitleDeckListColors = {
+  Idol: rgb(244, 208, 63),
+  Senshi: #CA6F1E,
+  Banchou: #A93226,
+  Gunshi: #2874A6,
+  Madoushi: #884EA0,
+  Okashii: #229954
+}
+
+// Keywords. Keywords come from the secondary properties section of a card type. Check the admin/gameplay page to set them. If set on a card, they will show up in the card info preview.
+keywords = hidden, vanguard, rush, "last life", legacy, frenzy, snipe, knocked-back, sacrifice, shield, overload, "warmed up", synergy, conjure, combatant, elusive, defense, poison, lifesteal, cannotAttack, spellPower, echo, immune, duration, silence, gemini, counter, field, armor, twist, remain, haste, frozen, damageVulnerability, damageResistance, damageImmunity, storedPower, sturdy, heroic actions, Sturdy, burn, soulEater, timeshifted, spellGuard, soulsCollected, curse, soulLinked, cold, heated,  BurnHeal, BurnImmune, conjured, bless, unarchived, ExtraCounter
+
+// Numbered keywords show up similarly to the keywords above, but is special in that it has a number beside it. For example Duration (3) for cards that lasts 3 turn.
+numberedKeywords = sacrifice, frenzy, shield, duration, spellPower, echo, counter, armor, defense, overload, "last life", damageVulnerability, damageResistance, damageImmunity, storedPower, heroic actions, Sturdy, burn, timeshifted, soulsCollected, curse, bless, ExtraCounter
+
+// When selecting cards to toss away during a mulligan, display an x overlay on top of it. To replace that x image, simply replace the url here.
+mulliganOverlay = url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1ablh1gc6_600px-red_x_svg.png")
+
+// TRUE OR FALSE OPTIONS. Set any of these options to false to turn them off.
+
+// Card Shapes
+SHAPE_UNITS = true // if set to true, unit cards will be more rounded instead of rectangular.
+SHAPE_EQUIPS = true // if set to true, equip cards will be circular instead of rectangular.
+SHAPE_HERO = true // if set to true, hero cards will have rounded tops.
+SHAPE_HEROPOWER = true // if set to true, hero power cards will be circular instead of rectangular.
+
+// Misc Options
+MEDIACONTENT_INSET_SHADOWS = true // The main image (or video) of a card has inset shadows that make the image seem to sink deeper into the card.
+HIDE_NEGATIVES = true // if set to true, stats which have a negative value will be shown as 0 instead of  its actual value.
+OVERLAY_MAIN_PROPERTIES = true // if set to true, main properties such as cost, atk, and health will be overlay on top of the card image instead of forming a table underneath.
+REQUIRE_TUTORIAL_COMPLETE = false // if set to true, other game modes will be hidden if tutorial isn't complete.
+
+/*
+ * Options END.
+ */
+
+/*
+ * Shapes. Different cards when played in different locations change shape. Some cards become circles, others become pointy or squarish. Here are some definitions for those shapes.
+ */
+
+unitShape()
+  if SHAPE_UNITS
+    clip-path ellipse(50% 50% at 50% 50%)
+
+weaponShape()
+  if SHAPE_EQUIPS
+    clip-path circle(42% at 50% 50%)
+
+heropowerShape()
+  if SHAPE_HEROPOWER
+    clip-path circle(42% at 50% 50%)
+
+afterlifeShape()
+  if SHAPE_UNITS
+    clip-path circle(20% at 50% 50%)
+
+/*
+ * Shapes END.
+ */
+
+/*
+ * Animations. Cards with special keywords may be animated. Here is the library of animations.
+ */
+
+@keyframes legendaryRarity
+  from
+    background-size 1%
+  to
+    background-size 100%
+
+@keyframes shieldThrob
+  0%
+    filter drop-shadow(0 -5px 5px #c6e000)
+  100%
+    filter drop-shadow(0 -5px 20px #c6e000)
+
+@keyframes shieldEnter
+  0%
+    transform scale(0)
+  100%
+    transform scale(1)
+
+@keyframes frenzy
+  0%
+    transform translate(0px, 0px) rotate(0deg)
+
+  2%
+    transform translate(1px, 2px) rotate(2.5deg)
+
+  4%
+    transform translate(8px, 3px) rotate(2.5deg)
+
+  6%
+    transform translate(-2px, 10px) rotate(-1.5deg)
+
+  8%
+    transform translate(3px, 5px) rotate(-0.5deg)
+
+  10%
+    transform translate(3px, -1px) rotate(-0.5deg)
+
+  12%
+    transform translate(-1px, 1px) rotate(-0.5deg)
+
+  14%
+    transform translate(10px, -7px) rotate(-0.5deg)
+
+  16%
+    transform translate(-3px, -5px) rotate(2.5deg)
+
+  18%
+    transform translate(1px, -1px) rotate(3.5deg)
+
+  20%
+    transform translate(-1px, -9px) rotate(-0.5deg)
+
+  22%
+    transform translate(-9px, 5px) rotate(-2.5deg)
+
+  24%
+    transform translate(-2px, -7px) rotate(1.5deg)
+
+  26%
+    transform translate(0px, 5px) rotate(0.5deg)
+
+  28%
+    transform translate(-2px, 10px) rotate(-1.5deg)
+
+  30%
+    transform translate(6px, -2px) rotate(3.5deg)
+
+  32%
+    transform translate(3px, 9px) rotate(-1.5deg)
+
+  34%
+    transform translate(-6px, -8px) rotate(3.5deg)
+
+  36%
+    transform translate(-6px, 1px) rotate(2.5deg)
+
+  38%
+    transform translate(6px, 0px) rotate(3.5deg)
+
+  40%
+    transform translate(0px, -8px) rotate(1.5deg)
+
+  42%
+    transform translate(2px, 1px) rotate(2.5deg)
+
+  44%
+    transform translate(-1px, -1px) rotate(3.5deg)
+
+  46%
+    transform translate(-4px, -3px) rotate(-2.5deg)
+
+  48%
+    transform translate(5px, -7px) rotate(0.5deg)
+
+  50%
+    transform translate(-7px, 4px) rotate(2.5deg)
+
+  52%
+    transform translate(-2px, 9px) rotate(-1.5deg)
+
+  54%
+    transform translate(4px, 1px) rotate(-1.5deg)
+
+  56%
+    transform translate(7px, 4px) rotate(2.5deg)
+
+  58%
+    transform translate(2px, 1px) rotate(1.5deg)
+
+  60%
+    transform translate(4px, -7px) rotate(1.5deg)
+
+  62%
+    transform translate(-8px, 9px) rotate(3.5deg)
+
+  64%
+    transform translate(2px, -1px) rotate(-2.5deg)
+
+  66%
+    transform translate(4px, -2px) rotate(2.5deg)
+
+  68%
+    transform translate(4px, 10px) rotate(2.5deg)
+
+  70%
+    transform translate(0px, -8px) rotate(2.5deg)
+
+  72%
+    transform translate(0px, 10px) rotate(0.5deg)
+
+  74%
+    transform translate(-2px, 6px) rotate(3.5deg)
+
+  76%
+    transform translate(-9px, -5px) rotate(0.5deg)
+
+  78%
+    transform translate(7px, 1px) rotate(3.5deg)
+
+  80%
+    transform translate(0px, 6px) rotate(-0.5deg)
+
+  82%
+    transform translate(4px, -6px) rotate(3.5deg)
+
+  84%
+    transform translate(-4px, 8px) rotate(-2.5deg)
+
+  86%
+    transform translate(1px, 10px) rotate(1.5deg)
+
+  88%
+    transform translate(-3px, 5px) rotate(-2.5deg)
+
+  90%
+    transform translate(0px, -3px) rotate(2.5deg)
+
+  92%
+    transform translate(1px, 8px) rotate(0.5deg)
+
+  94%
+    transform translate(-2px, 1px) rotate(-0.5deg)
+
+  96%
+    transform translate(5px, 6px) rotate(0.5deg)
+
+  98%
+    transform translate(1px, -8px) rotate(0.5deg)
+
+@keyframes sonarBase
+  from
+    padding 0
+    opacity 0.6
+  to
+    padding 1.3em
+    opacity 0
+    top -1.3em
+    left -1.3em
+
+@keyframes sonarStroke
+  from
+    border-width 0.4em
+    margin -0.4em
+  to
+    border-width 0.1em
+
+@keyframes smoke
+  from
+    transform rotate(0deg)
+  to
+    transform rotate(0.75deg)
+
+@keyframes vanguardPulse
+  from
+    transform scale(0.7)
+    opacity 1
+  to
+    transform scale(1.2)
+    opacity 0
+
+// Shadow Animations
+@keyframes eligibilityHighlight
+  from
+    filter drop-shadow(0 -5px 14px eligibilityColor)
+  to
+    filter drop-shadow(0 -5px 16px eligibilityColor)
+
+// Haste
+@keyframes eligibilityHasteHighlight
+  from
+    filter drop-shadow(0 -5px 14px eligibilityHasteColor)
+  to
+    filter drop-shadow(0 -5px 16px eligibilityHasteColor)
+
+eligibilityHasteAnimation = eligibilityHasteHighlight .5s linear infinite alternate
+
+@keyframes curseHighlight
+  from
+    filter drop-shadow(0 -5px 14px curseColor)
+  to
+    filter drop-shadow(0 -5px 16px curseColor)
+
+@keyframes activeHighlight
+  from
+    filter drop-shadow(0 -5px 14px activeColor)
+  to
+    filter drop-shadow(0 -5px 16px activeColor)
+
+eligibilityAnimation = eligibilityHighlight .5s linear infinite alternate !important
+
+curseAnimation = curseHighlight .5s linear infinite alternate !important
+
+activeAnimation = activeHighlight .5s linear infinite alternate !important
+
+// animation definition for the counter property.
+@keyframes fadeInUpScale
+  0%
+    opacity 0
+    transform scale(0.4) translateY(0)
+
+  40%
+    opacity 1
+    transform scale(1) translateY(-14rem)
+
+  100%
+    opacity 1
+    transform scale(1) translateY(-14rem)
+
+@keyframes timerBar
+  0%
+    height 100vh
+  100%
+    height 0vh
+
+@keyframes swordSlash
+  from
+    background-position 0px
+  to
+    background-position -960px
+
+@keyframes healX
+  from
+    background-position-x 0px
+  to
+    background-position-x -960px
+@keyframes healY
+  from
+    background-position-y -384px
+  to
+    background-position-y -1152px
+
+@keyframes playX
+  from { background-position-x: 0px }
+  to { background-position-x: -710px }
+@keyframes playY
+  from { background-position-y: 0px }
+  to { background-position-y: -355px }
+
+@keyframes spin
+  from
+    transform rotate(0deg)
+  to
+    transform rotate(360deg)
+
+@keyframes phoenixWingLeft
+  0%
+    opacity 0
+    transform scale(0.5) rotate(-40deg)
+  30%
+    opacity 1
+  80%
+    transform scale(1.5) rotate(5deg)
+  100%
+    transform scale(1.5) rotate(5deg)
+    opacity 0
+@keyframes phoenixWingRight
+  0%
+    opacity 0
+    transform scale(0.5) scaleX(-1) rotate(-40deg)
+  30%
+    opacity 1
+  80%
+    transform scale(1.5) scaleX(-1) rotate(5deg)
+  100%
+    transform scale(1.5) scaleX(-1) rotate(5deg)
+    opacity 0
+
+@keyframes auraUnit
+  0%
+    box-shadow: 0px 0px 0px 0px auraUnitColor
+  75%
+    box-shadow: 0px 0px 15px 10px auraUnitColor
+  100%
+    opacity: 0
+
+summoningSickness()
+  display block
+  position absolute
+  font-family sans-serif
+  user-select none
+  top 1rem
+  right 1rem
+  color summoningSicknessColor
+  font-size 4rem
+  opacity 0
+  text-shadow #333 0px 0px 0.2rem, #333 0px 0px 0.2rem
+  font-weight bold
+  backface-visibility hidden
+  transform-style preserve-3d
+  animation summoningSickness linear 3s
+  animation-iteration-count infinite
+
+@keyframes summoningSickness
+  0%
+    transform translate(0px,0px) scale(0.5)
+    opacity 0
+    filter blur(0px)
+  25%
+  75%
+    opacity 1
+    filter blur(0px)
+  100%
+    transform translate(5rem,-5rem) scale(1.5)
+    opacity 0
+    filter blur(1rem)
+
+@keyframes powerUseAnim
+  0%
+    box-shadow
+      inset 0 0 50px rgba(255,255,255,0),
+      inset 20px 0 80px rgba(255,0,255,0),
+      inset -20px 0 80px rgba(0,255,255,0),
+      inset 20px 0 300px rgba(255,0,255,0),
+      inset -20px 0 300px rgba(0,255,255,0),
+      0 0 30px rgba(255,255,255,0),
+      -10px 0 50px rgba(255,0,255,0),
+      10px 0 50px rgba(0,255,255,0)
+
+  50%
+    box-shadow
+      inset 0 0 50px rgba(255,255,255,.4),
+      inset 20px 0 80px rgba(255,0,255,.4),
+      inset -20px 0 80px rgba(0,255,255,.4),
+      inset 20px 0 300px rgba(255,0,255,.4),
+      inset -20px 0 300px rgba(0,255,255,.4),
+      0 0 30px rgba(255,255,255,.4),
+      -10px 0 50px rgba(255,0,255,.4),
+      10px 0 50px rgba(0,255,255,.4)
+    color rgba(255,255,255,1)
+    font-size 15rem
+    text-indent -2.5rem
+
+  100%
+    box-shadow
+      inset 0 0 50px rgba(255,255,255,0),
+      inset 20px 0 80px rgba(255,0,255,0),
+      inset -20px 0 80px rgba(0,255,255,0),
+      inset 20px 0 300px rgba(255,0,255,0),
+      inset -20px 0 300px rgba(0,255,255,0),
+      0 0 30px rgba(255,255,255,0),
+      -10px 0 50px rgba(255,0,255,0),
+      10px 0 50px rgba(0,255,255,0)
+    color rgba(255,255,255,0)
+    font-size 20rem
+    text-indent -4.5rem
+
+@keyframes rotation
+  0%
+    transform rotate(0)
+    opacity 0.75
+  50%
+    transform rotate(0.5turn)
+    opacity 0.4
+  100%
+    transform rotate(1turn)
+    opacity 0.75
+
+@keyframes stunEnter
+  from { transform: translate(-50%, 0) scale(0) }
+  to { transform: translate(-50%, 0) scale(1, 0.6) }
+
+/*
+ * Animations END.
+ */
+
+/*
+ * Player Properties Styling.
+ */
+
+#opponent-overload[data-type=stat], #me-overload[data-type=stat]
+  &[data-value="0"]
+    display none
+  .statWrapper
+    width 100%
+  .count
+    box-sizing border-box
+    text-align center
+    width 100%
+    &:before
+      content "-"
+      margin-right 3px
+
+#opponent-reserve[data-type=stat], #me-reserve[data-type=stat]
+  &[data-value="0"]
+    display none
+  .statWrapper
+    width 100%
+  .count
+    box-sizing border-box
+    text-align center
+    width 100%
+    &:before
+      content "+"
+      margin-right 3px
+
+#me-maxMana, #opponent-maxMana
+  justify-content flex-start
+  .statWrapper
+    width 100%
+  .count
+    box-sizing border-box
+    text-align right
+    width 100%
+    border-top-left-radius 0
+    border-bottom-left-radius 0
+    margin-left -3px
+    &:before
+      content "/"
+      margin-right 3px
+
+#opponent-mana[data-type=stat], #me-mana[data-type=stat]
+  .statWrapper
+    width 100%
+  .count
+    box-sizing border-box
+    padding-right 6px
+    text-align right
+    width 100%
+    border-top-right-radius 0
+    border-bottom-right-radius 0
+
+#opponent-maxMana[data-type=stat], #me-maxMana[data-type=stat]
+  .statWrapper
+    width 100%
+  .count
+    text-align left
+    width 100%
+    border-top-left-radius 0
+    border-bottom-left-radius 0
+
+/*
+ * Player Properties Styling END.
+ */
+
+/*
+ * Card Full Info Popup Styling. The default card popups do not have the card stats displayed on top of the card image. Because different games may have different stats and would likely want to use them in different ways, the default stats are arranged in a table underneath. Here for the template we can save space on the card by putting the stats on top of the card image.
+ */
+
+statStyles()
+  border-radius 50em
+  background statBgColor
+  color statTextColor
+  padding .2em .4em
+  position absolute
+  font-size 1.5em
+  font-weight bold
+  line-height 1
+  width inherit
+  z-index 2
+
+setNegativesToZero()
+  if HIDE_NEGATIVES
+    // ensure that all negative values are displayed as 0.
+    &[data-value^="-"]
+      .data
+        color transparent
+        // TODO: don't like using !important here. Consider rewriting.
+        text-shadow none !important
+        position absolute
+      &:before
+        content "0"
+
+// Animations for sliding multiple preview card, values should be tweaked acording to game, margin-left should roughly be the width of one image and double the size for 2 images etc.
+
+@-webkit-keyframes slide2 {
+  0% { margin-left: 0px }
+  49% { margin-left: 0px }
+  50% { margin-left: -4.48em }
+  99% { margin-left: -4.48em }
+  100% { margin-left: 0px }
+}
+
+@-webkit-keyframes slide3 {
+  0% { margin-left: 0px }
+  32% { margin-left: 0px }
+  33% { margin-left: -4.49em }
+  65% { margin-left: -4.49em }
+  66% { margin-left: -8.98em }
+  99% { margin-left: -8.98em }
+  100% { margin-left: 0px }
+}
+
+@-webkit-keyframes slide4 {
+  0% { margin-left: 0px }
+  24% { margin-left: 0px }
+  25% { margin-left: -4.49em }
+  49% { margin-left: -4.49em }
+  50% { margin-left: -8.99em }
+  74% { margin-left: -8.99em }
+  75% { margin-left: -13.48em }
+  99% { margin-left: -13.48em }
+  100% { margin-left: 0px }
+}
+
+.card-info-container.visible
+  overflow visible
+
+// TODO: Move below?
+#cardFullInfo.hero
+.cardFullInfo.hero
+#cardFullInfo:has(.hero)
+.cardFullInfo:has(.hero)
+  .cardDisplayInner .name
+    &:before
+      content: '';
+      margin: 0;
+      background: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i2cghi8u_crown.png);
+      background-size: 85% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 5rem;
+      aspect-ratio: 1;
+      position: absolute;
+      top: -1.7rem;
+      left: -2.5rem;
+      z-index: 1;
+      opacity: 1;
+      height: auto;
+      transform: unset;
+      filter: drop-shadow(1px 1px 6px #000);
+
+    &:after
+      content: '';
+      mask-image: url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i2cghi8u_crown.png);
+      mask-size: 85% 100%;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      width: 5rem;
+      aspect-ratio: 1;
+      background: linear-gradient(90deg, #ffd700, #ffa500);
+      position: absolute;
+      top: -1.7rem;
+      left: -2.5rem;
+      z-index: 1;
+      opacity: 1;
+      height: auto;
+      transform: unset;
+
+.card-info-container #cardFullInfo
+.card-info-container .cardFullInfo
+  padding-bottom 44px
+
+#cardFullInfo .cardDisplayInner
+.cardFullInfo .cardDisplayInner
+  color #eee
+  border-radius .75rem
+
+  .name
+    position absolute
+    z-index 1
+    width 90%
+    right 0
+    box-sizing border-box
+    top .7rem
+    padding 0.5rem 1rem 0.5rem 2rem
+    font-size larger
+    line-height 1.125rem
+    font-family "Yu Gothic Medium", sans-serif
+    text-align right
+    border-top 1px solid #a6acaf
+    border-bottom 1px solid #212f3c
+    border-radius 0
+    background linear-gradient(270deg, rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.4), rgba(33, 47, 60, 0.8))
+    text-shadow 1px 1px black, -1px 1px black, 1px -1px black, -1px -1px black
+
+  .image, .video
+    position relative
+    border-bottom 2px solid #000
+
+    img
+      border-radius 0.75rem
+
+    if MEDIACONTENT_INSET_SHADOWS
+      &:after
+        content ""
+        display block
+        height 100%
+        position absolute
+        top 0
+        width 100%
+        border-radius 0.75rem
+        border-bottom-left-radius 0
+        border-bottom-right-radius 0
+        box-shadow inset 0 0 20px 8px rgba(0,0,0,0.8)
+        background linear-gradient(to top, rgba(0, 0, 0, .8), transparent 30%)
+
+  .info
+    position relative
+
+  .tooltip
+    padding 0.25rem 0.5rem
+    background rgba(0, 0, 0, .4)
+    border-radius 2rem
+    order 1
+    font-weight bold
+    border 1px solid black
+    line-height 1.2
+
+  .classes
+    display none
+
+  .individualClasses
+    display flex
+    font-size small
+    color black
+    text-shadow 1px 1px 0 #fff, -1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff
+    font-weight bold
+    gap 0.25rem
+
+    span:not(:last-child):after
+      content ','
+
+  ul.dataPane
+    display flex
+    flex-direction column
+    position absolute
+    top 0
+    left 0
+    justify-content end
+    height: calc(100% + 44px)
+    width 100%
+
+
+    li.effect, li.desc
+      font-size 15px
+      width auto
+      background rgba(0,0,0,.5)
+      padding 0.5rem
+      margin 0 0.5rem
+      border 1px solid rgba(255,255,255,.6)
+      background linear-gradient(270deg, transparent, rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.4), rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.8), transparent)
+      border-image linear-gradient(to right, transparent, #212f3c, #a6acaf, #212f3c, transparent) 1
+
+      .data
+        font-family 'Bahnschrift', sans-serif
+        display flex
+        flex-direction column
+        align-items center
+        justify-items center
+        color white
+        text-shadow 1px 1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000
+
+    .secondaryProperties:not(:empty) + li.effect,
+    .secondaryProperties:not(:empty) + li.desc,
+    li.effect + li.desc
+      padding-top 0
+      border-top none
+
+    li.desc
+      font-size 12px
+
+    li.type
+      position absolute
+      background none
+      top: 2.7rem;
+      right: 0;
+      padding: 0.5rem;
+
+      .data
+        display flex
+        align-items center
+        gap 0.5rem
+        font-family "Yu Gothic Medium", sans-serif
+
+    if OVERLAY_MAIN_PROPERTIES
+      li
+        .data
+          width auto
+      .mainProperties
+        width auto
+        .table
+          display block
+          border-spacing 0
+          .Row .td
+            display block
+            padding 0
+        .title
+          display none
+
+        .property
+          statStyles()
+          font-size 3em
+          setNegativesToZero()
+
+        [data-name="previewCards"]  // The values below should be tweaked for your specific game mainly width, top, left
+          background rgba(0,0,0,0)
+          padding 0px
+          margin 0px
+          width 4.48em
+          top -1.24em
+          left -4.48em
+          border-radius .1em
+          overflow-x scroll
+          .data
+            for key, value in previewCards
+              [data-name=\"{key}\"]
+                background rgba(0,0,0,0)
+                padding 0px
+                margin 0px
+                height 100%
+                content value
+                zoom 71%
+
+          &[data-value=""]
+            display none
+
+          &[data-value*="slide2"]
+            .data //slider
+              display flex
+              animation slide2 4s linear infinite
+              [data-name="slide2"]
+                display none
+
+          &[data-value*="slide3"]
+            .data //slider
+              display flex
+              animation slide3 6s linear infinite
+              [data-name="slide3"]
+                display none
+
+         &[data-value*="slide4"]
+            .data //slider
+              display flex
+              animation slide4 12s linear infinite
+              [data-name="slide4"]
+                display none
+
+        [data-name="cost"]
+          overflow visible
+          z-index 1
+          display flex
+          position absolute
+          align-items center
+          justify-content center
+          background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i226k5fh_manaGem_polished_small_ver.png)
+          background-size cover
+          background-position center
+          background-repeat no-repeat
+          text-shadow 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000
+          color #fff
+          font-family "Fjalla One", sans-serif
+          font-size 1.5rem
+          font-weight bold
+          line-height 1
+          box-sizing border-box
+          width 4rem
+          aspect-ratio 1
+          top -1%
+          left -3%
+          filter drop-shadow(2px 2px 3px #000)
+          font-size 2.5rem
+          padding-top 0.5rem
+          border 0
+        [data-name="atk"]
+          overflow visible
+          border 3px solid atkColor
+          top unset
+          bottom -0.5rem
+          left -0.5rem
+          width 4rem
+          height 4rem
+          display flex
+          align-items center
+          justify-content center
+          font-family "Fjalla One", sans-serif
+          font-size 2.5rem
+          font-weight bold
+          line-height 1
+          filter drop-shadow(2px 2px 3px #000)
+        [data-name="health"]
+          overflow visible
+          border 3px solid healthColor
+          top unset
+          bottom -0.4rem
+          right -0.4rem
+          width 4rem
+          height 4rem
+          display flex
+          align-items center
+          justify-content center
+          font-family "Fjalla One", sans-serif
+          font-size 2.5rem
+          font-weight bold
+          line-height 1
+          margin 0
+          left unset
+          filter drop-shadow(2px 2px 3px #000)
+        [data-name="dur"]
+          overflow visible
+          border 3px solid durColor
+          top unset
+          bottom -0.5rem
+          right -0.4rem
+          width 4rem
+          height 4rem
+          display flex
+          align-items center
+          justify-content center
+          font-family "Fjalla One", sans-serif
+          font-size 2.5rem
+          font-weight bold
+          line-height 1
+          filter drop-shadow(2px 2px 3px #000)
+        [data-name="reqSource"], [data-name="source"]
+          display none
+        [data-name="expansion"]
+          width 100%
+          background none
+          font-family 'Rubik', sans-serif
+          font-size x-small
+          font-weight normal
+          bottom 0.8rem
+          display flex
+          justify-content center
+          .data
+            color #E5E7E9
+
+    li.effect, li.rarity, li.description, li.desc, li.type
+      .data
+        float none
+        width auto
+      .title
+        display none
+      text-align center
+    .secondaryProperties
+      flex-wrap wrap
+      gap 0.1rem
+      justify-content center
+      overflow hidden
+      margin 0 0.5rem
+      padding 0.5rem
+      box-sizing border-box
+      text-align center
+      background linear-gradient(270deg, transparent, rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.4), rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.8), transparent)
+      border 1px solid rgba(255,255,255,0.6)
+      border-image linear-gradient(to right, transparent, #212f3c, #a6acaf, #212f3c, transparent) 1
+
+      &:not(:empty)
+        display flex
+
+      .property
+        margin 0
+        padding 0
+        display flex
+        align-items center
+        justify-content center
+        .title, &:after
+          font-size 15px !important
+          font-family 'Bahnschrift', sans-serif !important
+          text-shadow 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black
+
+      // there are some properties that are for internal or UI purposes only, not meant to be displayed.
+      li
+        &[data-name="eligibleToAttack"]
+          display none
+
+      li
+        display inline-block
+        background none
+        padding 9.75px 0
+        overflow visible
+        margin 0 0 1px
+        .data, .title
+          -webkit-font-smoothing auto
+          display inline
+          width auto
+          float none
+          padding-right 0
+        &[data-value="0"]
+          display none
+        &[data-name="legacy"], &[data-name="invoke"], &[data-name="defensive"], &[data-name="offensive"]
+          display none
+        for keyword in keywords
+          &[data-name=\"{keyword}\"]
+            color white
+            font inherit
+            font-weight bold
+            &:after
+              content ". "
+              display inline
+              padding-right .25em
+            .title
+              text-transform capitalize
+              color white
+              font inherit
+              font-weight bold
+            .data
+              display none
+        for keyword in numberedKeywords
+          &[data-name=\"{keyword}\"]
+            .title
+              padding-right 0
+            &:after
+              content " (" attr(data-value) "). "
+              display inline
+              padding-right .25em
+
+
+        // if the value is 1 then don't show the data as usual. Only show data if value is more than 1.
+        &[data-name="frenzy"], &[data-name="shield"], &[data-name="echo"]
+          &[data-value="1"]
+            &:after
+              content ". "
+              display inline
+              padding-right .25em
+
+        // "silence" keyword is shown as "silenced" in keyword list
+        &[data-name="silence"]
+          &:after
+            content "d. "
+            display inline
+            padding-right .25em
+
+    li.rarity
+      display flex
+      justify-content center
+      font-family 'Rubik', sans-serif
+      font-size 12px
+      line-height 1.2rem
+      border-bottom-left-radius 0.75rem
+      border-bottom-right-radius 0.75rem
+      background black
+      border-top rgba(255, 255, 255, 0.3) solid 1px
+      margin-top 1.25rem
+      padding 1.5rem
+      padding-top 0
+      text-shadow 0px 0px 10px lightblue
+      position relative
+      overflow visible
+
+      .data
+        z-index 1
+
+      &:before
+        content ""
+        display unset
+        position absolute
+        width 100px
+        height 29px
+        background black
+        border-radius 50%
+        top: -0.75rem;
+        z-index 0
+        border-top 1px solid grey
+
+      &[data-value="98"]
+        .data, .name, .dataPane
+        visibility hidden
+          background -webkit-linear-gradient(blue, green)
+          font-weight bold
+          -webkit-background-clip text
+          -webkit-text-fill-color transparent
+          visibility visible
+  &.hero, &.unit, &.equip
+    li.rarity
+      padding-right 4rem
+
+  &:has(ul.dataPane li.desc) ul.dataPane .secondaryProperties,
+  &:has(ul.dataPane li.desc) ul.dataPane li.effect
+    padding-bottom 0.25rem
+    border-bottom none
+  &:has(ul.dataPane li.effect) ul.dataPane .secondaryProperties
+    border-bottom none
+    padding-bottom 0
+
+// Don't show the keywords help for the reqSource and source properties. The helptext for these properties are only for developers and not players.
+.keywords-help
+  .keyword[data-name="source"]
+  .keyword[data-name="reqSource"]
+    display none
+
+// Class Styling. Cards of different classes will have different color border and texts.
+classStyles(c)
+  .name, .dataPane
+    color c
+  .name
+    border-top 3px solid c
+  .image, .video
+    border-bottom 2px solid c
+    &:after
+      box-shadow inset 0 0 30px 15px darken(alpha(c, 0.8), 80%)
+
+/*
+ * Card Full Info Popup Styling END.
+ */
+
+/*
+ * Select Cards Modal Styling.
+ */
+
+.select-cards-container
+  .cards
+    if OVERLAY_MAIN_PROPERTIES
+      .card
+        .mainProperty
+          statStyles()
+          font-size 3em
+          display block
+          setNegativesToZero()
+        [data-name="cost"]
+          top 10px
+          left 10px
+          border 3px solid costColor
+        [data-name="atk"]
+          top 294px
+          left 10px
+          border 3px solid atkColor
+        [data-name="health"]
+          top 294px
+          right 10px
+          border 3px solid healthColor
+        [data-name="dur"]
+          top 294px
+          right 10px
+          border 3px solid durColor
+        [data-name="reqSource"],[data-name="previewCards"],[data-name="source"]
+          display none
+
+  // when selecting mulligans
+  &[data-effectname="mulliganB"]
+  &[data-effectname="mulliganA"]
+    .select-cards-inner
+      .card
+        &:not(.selected)
+          box-shadow 0 0 30px 7px rgba(81, 255, 0, .7)
+        &.selected
+          box-shadow none
+          &:after
+            position absolute
+            height 92%
+            width 92%
+            top 4%
+            left 4%
+            background center center no-repeat
+            background-size contain
+            background-image mulliganOverlay
+            content " / "
+            display block
+            color transparent
+
+/*
+ * Select Cards Modal Styling END.
+ */
+
+/*
+ * Play Interface.
+ */
+
+#selectCardsContainer .card
+  width 220px !important
+  height auto !important
+
+  &, .card-inner > img
+    border-radius 0.5rem
+
+  .card-inner:after
+    content ''
+    position: absolute
+    display block
+    border-radius 0.5rem
+    background-image linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 80%, rgba(19, 11, 43, 0.2) 88%, rgba(19, 11, 43, 0.4) 95%, rgba(19, 11, 43, 0.8) 100%)
+    width 100%
+    height 100%
+    z-index 1
+    top 0
+    left 0
+
+  .properties
+    display block
+    height 0
+
+    & > *
+      display none
+
+    div[data-name="name"]
+      display block
+      position absolute
+      color white
+      bottom unset
+      top 6px
+      width 100%
+      left unset
+      box-sizing border-box
+      text-shadow black 1px 1px
+      text-align right
+      right 0
+      font-size 14px
+      background linear-gradient(270deg, rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.4), rgba(33, 47, 60, 0.8))
+      padding 0.15rem 0.5rem
+      border-top 1px solid #A6ACAF
+      border-bottom 1px solid #212F3C
+      z-index 0
+      line-height 1.5
+      border-top-right-radius 2px
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      border-radius 0
+
+      p
+        display inline
+        &:before
+          content ' '
+
+    div[data-name="health"], div[data-name="dur"], div[data-name="atk"]
+      display flex
+      position absolute
+      border-radius 50%
+      background rgba(0, 0, 0, 0.8)
+      color #fff
+      font-family "Fjalla One", sans-serif
+      font-size 2.2rem
+      font-weight bold
+      line-height 1
+      box-sizing border-box
+      width 3.5rem
+      height auto
+      aspect-ratio 1
+      overflow visible
+      border 2px solid transparent
+      display flex
+      align-items center
+      justify-content center
+      padding-top 6px
+      text-shadow 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+      box-shadow #000 3px 3px 8px
+      z-index 2
+      top unset
+
+    div[data-name="dur"]
+      border-color durColor
+      bottom -3%
+      right -5%
+    div[data-name="health"]
+      border-color healthColor
+      bottom -3%
+      right -5%
+    div[data-name="atk"]
+      border-color atkColor
+      bottom -3%
+      left -6%
+
+    div[data-name="cost"]
+      border none
+      z-index 1
+      display flex
+      position absolute
+      align-items center
+      justify-content center
+      background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i226k5fh_manaGem_polished_small_ver.png)
+      background-size cover
+      background-position center
+      background-repeat no-repeat
+      text-shadow 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+      color white
+      font-family "Fjalla One", sans-serif
+      font-weight bold
+      line-height 1
+      box-sizing border-box
+      width 3.5rem
+      aspect-ratio 1
+      top -4%
+      left -5%
+      filter drop-shadow(2px 2px 3px #000)
+      font-size 2.5rem
+      padding-top 0.5rem
+
+      &:empty
+        display none
+
+  &.hero div[data-name="atk"][data-value="0"]
+    display none
+
+  &:has(.properties .cost:empty), &.hero, &.draftPack
+    .name
+      padding-left 0.5rem
+      text-align center
+
+  for key1, value1 in cardTitleColorRules
+    for key2, value2 in cardTitleColorRules
+      if key1 == key2
+        &:has(div[data-value=\"{key1}\"])
+          .name
+            background: linear-gradient(270deg, value1["backgroundColor"], value1["backgroundJoinColor"], value1["backgroundColor"])
+            border-top-color: value1["topBorderColor"]
+            border-bottom-color: value1["bottomBorderColor"]
+          ul.dataPane
+            .secondaryProperties
+            li.effect
+            li.desc
+              border-image: linear-gradient(to right, transparent, value1["bottomBorderColor"], value1["topBorderColor"], value1["bottomBorderColor"], transparent) 1
+      else
+        &:has(div[data-value^=\"{key1}\"][data-value*=\"{key2}\"])
+          .name
+            background: linear-gradient(90deg, value1["backgroundColor"], rgba(255,255,255,0.3), value2["backgroundColor"])
+            border-top-color: value1["topBorderColor"]
+            border-bottom-color: value2["bottomBorderColor"]
+          ul.dataPane
+            .secondaryProperties
+            li.effect
+            li.desc
+              border-image: linear-gradient(to right, transparent, value1["backgroundColor"], value1["backgroundColor"], value2["backgroundColor"], value2["backgroundColor"], transparent) 1
+
+#playContainer
+  .card
+    box-shadow none
+
+    .name
+      position absolute
+      color white
+      bottom unset
+      top 4px
+      width 100%
+      left unset
+      padding 0.25rem
+      box-sizing border-box
+      text-shadow black 1px 1px
+      text-align right
+      right 0
+      font-size 12px
+      background linear-gradient(270deg, rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.4), rgba(33, 47, 60, 0.8))
+      padding 0px 0.5rem 0 2.5rem
+      border-top 1px solid #A6ACAF
+      border-bottom 1px solid #212F3C
+      z-index 0
+      line-height 1.5
+      border-top-right-radius 2px
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      border-radius 0
+
+      p
+        display inline
+        &:before
+          content ' '
+
+    &:has(.properties .cost:empty), &.hero, &.draftPack
+      .name
+        padding-left 0.5rem
+        text-align center
+
+    for key1, value1 in cardTitleColorRules
+      for key2, value2 in cardTitleColorRules
+        if key1 == key2
+          &:has(div[data-value=\"{key1}\"])
+            .name
+              background: linear-gradient(270deg, value1["backgroundColor"], value1["backgroundJoinColor"], value1["backgroundColor"])
+              border-top-color: value1["topBorderColor"]
+              border-bottom-color: value1["bottomBorderColor"]
+
+            ul.dataPane .secondaryProperties
+            ul.dataPane li.effect
+            ul.dataPane li.desc
+              border-image: linear-gradient(to right, transparent, value1["bottomBorderColor"], value1["topBorderColor"], value1["bottomBorderColor"], transparent) 1
+        else
+          &:has(div[data-value^=\"{key1}\"][data-value*=\"{key2}\"])
+            .name
+              background: linear-gradient(90deg, value1["backgroundColor"], rgba(255,255,255,0.3), value2["backgroundColor"])
+              border-top-color: value1["topBorderColor"]
+              border-bottom-color: value2["bottomBorderColor"]
+
+            ul.dataPane .secondaryProperties
+            ul.dataPane li.effect
+            ul.dataPane li.desc
+              border-image: linear-gradient(to right, transparent, value1["backgroundColor"], value1["backgroundColor"], value2["backgroundColor"], value2["backgroundColor"], transparent) 1
+
+    .property
+      setNegativesToZero()
+
+      &[data-name="cost"]
+      &[data-name="atk"]
+      &[data-name="health"]
+      &[data-name="armor"]
+      &[data-name="LegacyUnit"]
+        display block
+        z-index 1
+        overflow hidden
+
+      &[data-name="atk"], &[data-name="health"], &[data-name="dur"]
+        statStyles()
+        font-family "Fjalla One", sans-serif
+        box-sizing border-box
+        background rgba(0,0,0,0.75)
+        padding-right 0.45em
+        padding-top 0.23em
+        display flex
+        justify-content center
+        width 1.6em
+        aspect-ratio 1
+        overflow visible
+        border 2px solid transparent
+
+        .data
+          text-align center
+          line-height 1.1
+          font-weight bold
+          text-shadow 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black
+
+      &[data-name="cost"]
+        z-index 1
+        display flex
+        position absolute
+        align-items center
+        justify-content center
+        background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i226k5fh_manaGem_polished_small_ver.png)
+        background-size cover
+        background-position center
+        background-repeat no-repeat
+        text-shadow 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+        color white
+        font-family "Fjalla One", sans-serif
+        font-size 1.5rem
+        font-weight bold
+        line-height 1
+        box-sizing border-box
+        width 2.5rem
+        aspect-ratio 1
+        top -4%
+        left -8%
+        filter drop-shadow(2px 2px 3px #000)
+        font-size 1.5rem
+        padding-top 0.1rem
+
+      &[data-name="atk"]
+        bottom 0
+        right 70%
+        border-color atkColor
+
+      &[data-name="health"]
+        bottom 0
+        left 70%
+        border-color healthColor
+
+      &[data-name="dur"]
+        top 65%
+        right 0
+        border-color durColor
+
+      &[data-name="armor"]
+        statStyles()
+        padding 0.35em 0.35em 0.45em 0.35em
+        line-height 1.4em
+        bottom 5rem
+        right 0
+        filter drop-shadow(0 -5px 15px #919191)
+        background transparent
+        width 1.4em
+        background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1ck5p2pv3_greyblueshield.png)
+        background-size contain
+        background-position center center
+        background-repeat no-repeat
+        opacity 0.9
+
+
+    &[data-powerusedthisturn="0"]
+      .property[data-name="powerName"]
+        position absolute
+        top 0
+        height 100%
+        width 100%
+        display block
+        border-top-left-radius 20em 30em
+        border-top-right-radius 20em 30em
+        overflow hidden
+        color rgba(0, 0, 0, 0)
+        font-size 1.4em
+        display none
+        &:after
+          content attr(data-value)
+          display block
+          top 5rem
+          width 100%
+          text-align center
+          padding .25rem 0
+          color powerColor
+          text-shadow black 0px 0px 5px, black 0px 0px 2px
+          pointer-events none
+          background-color statBgColor
+          position absolute
+
+    &.powerUseAnimation:after
+      display block
+      content ""
+      color rgba(255,255,255,0)
+      width 100%
+      height 100%
+      animation powerUseAnim 1200ms cubic-bezier(0.39, 0.575, 0.565, 1)
+      position absolute
+      border-top-left-radius 20em 30em
+      border-top-right-radius 20em 30em
+      top 0
+      left 0
+      right 0
+      bottom 0
+
+    &[data-location="me-hero"]
+    &[data-location="opponent-hero"]
+      .media-content
+        heroShape()
+
+      .card-inner:after
+        content ""
+        width 100%
+        height 100%
+        position absolute
+        top 0
+        left 0
+        box-shadow inset 2px 2px 10px rgba(0,0,0,.5), inset -2px -2px 10px rgba(0,0,0,.5), inset 2px -2px 10px rgba(0,0,0,.5), inset -2px 2px 10px rgba(0,0,0,.5)
+        heroShape()
+        border-top-left-radius 50%
+        border-top-right-radius 50%
+
+      keywordVisualEffectsBasic()
+        position absolute
+        display block
+        color rgba(0, 0, 0, 0)
+
+      img
+        if SHAPE_HERO
+          border-top-left-radius 20em 30em
+          border-top-right-radius 20em 30em
+        border 3px solid grey
+
+      .property
+        &[data-name="health"]
+          left: unset;
+          right: -0.5em;
+          bottom: -0.3em;
+        &[data-name="atk"]
+          right: unset;
+          left: -0.5em;
+          bottom: -0.3em;
+
+      &[data-shield="1"]
+        .property[data-name="shield"]
+          keywordVisualEffectsBasic()
+          animation shieldEnter 1s cubic-bezier(.55,0,.1,1), shieldThrob 1.7s alternate infinite
+          z-index 1
+          filter drop-shadow(0 -5px 15px #c6e000)
+          background transparent
+          width 3.8em
+          height 4.4em
+          bottom -1.3em
+          left calc(70% - 0.75em)
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1abmn8gl0_9TpjLAETE.svg")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+          opacity .6
+      &[data-vanguard="1"]
+        .property[data-name="vanguard"]
+          display block
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+
+          &:before, &:after, .data:before
+            content ""
+            position absolute
+            width calc(100% + 10px)
+            height calc(100% + 10px)
+            background-image linear-gradient(to bottom, lightBorderGradientColor, darkBorderGradientColor)
+            background-origin border-box
+            background-clip border-box
+            top -5px
+            left -5px
+            border-bottom-right-radius 100%
+            border-bottom-left-radius 100%
+            transform translate(-50%, -50%)
+            animation vanguardPulse 3s ease infinite
+            z-index -1
+            opacity 0
+
+          &:before
+            animation-delay 1s
+          &:after
+            animation-delay 2s
+          .data
+            color transparent
+
+      &[data-spellGuard="1"]
+        .property[data-name="spellGuard"]
+          display block
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+
+          &:before, &:after, .data:before
+            content ""
+            position absolute
+            width calc(100% + 10px)
+            height calc(100% + 10px)
+            background-image linear-gradient(to right, rgb(233,50,200), rgb(255,100,255))
+            background-origin border-box
+            background-clip border-box
+            top -5px
+            left -5px
+            border-bottom-right-radius 100%
+            border-bottom-left-radius 100%
+            transform translate(-50%, -50%)
+            animation vanguardPulse 3s ease infinite
+            z-index -1
+            opacity 0
+
+          &:before
+            animation-delay 1s
+          &:after
+            animation-delay 2s
+          .data
+            color transparent
+
+      &[data-frozen="1"]
+        .property[data-name="frozen"]
+          background rgba(0,215,255,.35)
+          keywordVisualEffectsBasic()
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          heroShape()
+
+      &[data-frozen="2"]
+        .property[data-name="frozen"]
+          background rgba(0,215,255,.75)
+          keywordVisualEffectsBasic()
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          heroShape()
+
+      &[data-elusive="1"]
+        .property[data-name="elusive"]
+          background rgba(255,215,0,.15)
+          keywordVisualEffectsBasic()
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          border-top-left-radius 100%
+          border-top-right-radius 100%
+
+      &[data-burn="1"]
+      &[data-burn="2"]
+      &[data-burn="3"]
+      &[data-burn="4"]
+      &[data-burn="5"]
+      &[data-burn="6"]
+      &[data-burn="7"]
+      &[data-burn="8"]
+      &[data-burn="9"]
+      &[data-burn="10"]
+      &[data-burn="11"]
+      &[data-burn="12"]
+        .property[data-name="burn"]
+          keywordVisualEffectsBasic()
+          z-index 0
+          filter drop-shadow(0 -5px 15px #c6e000)
+          background transparent
+          left 0%
+          top 0%
+          width 100%
+          height 100%
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2fpcp0o_Burning.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+          opacity 1
+          heroShape()
+
+      &[data-snipe="1"]
+        .property[data-name="snipe"]
+          keywordVisualEffectsBasic()
+          z-index 1
+          filter drop-shadow(0 0px 2px red)
+          background transparent
+          left 20%
+          bottom -15%
+          width 60%
+          height 30%
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1bflo5jja_svg-20-512.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-hidden="1"]
+        .property[data-name="hidden"]
+          keywordVisualEffectsBasic()
+          box-shadow inset 20px 0 10px 0 rgba(0,0,0,0.1024), inset 40px 0 14px -4px rgba(0,0,0,0.128), inset 60px 0 18px -8px rgba(0,0,0,0.16), inset 80px 0 22px -12px rgba(0,0,0,0.2), inset 100px 0 26px -16px rgba(0,0,0,0.25)
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          heroShape()
+
+          &:before
+            content ""
+            animation-name spin
+            animation-duration 20000ms
+            animation-iteration-count infinite
+            animation-timing-function linear
+            position absolute
+            width 200px
+            height 200px
+            background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g551s52s_kindpng_6667876.png)
+            background-size contain
+            left -50px
+            top 10px
+            opacity 0.5
+            filter drop-shadow(10px 10px 4px rgba(255,255,255,0.2))
+
+          &:after
+            content ""
+            animation-direction reverse
+            animation-name spin
+            animation-duration 25000ms
+            animation-iteration-count infinite
+            animation-timing-function linear
+            position absolute
+            width 200px
+            height 200px
+            background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g551s52s_kindpng_6667876.png)
+            background-size contain
+            left -30px
+            top -40px
+            opacity 0.5
+            filter drop-shadow(10px 10px 4px rgba(255,255,255,0.2))
+
+      &[data-vanguard="1"]
+        .property[data-name="vanguard"]
+          display block
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+
+          &:before, &:after, .data:before
+            content ""
+            position absolute
+            width calc(100% + 10px)
+            height calc(100% + 10px)
+            background-image linear-gradient(to bottom, lightBorderGradientColor, darkBorderGradientColor)
+            background-origin border-box
+            background-clip border-box
+            top -5px
+            left -5px
+            border-bottom-right-radius 100%
+            border-bottom-left-radius 100%
+            transform translate(-50%, -50%)
+            animation vanguardPulse 3s ease infinite
+            z-index -1
+            opacity 0
+
+          &:before
+            animation-delay 1s
+          &:after
+            animation-delay 2s
+          .data
+            color transparent
+
+      // TODO: find a way to combine this with the unit property.
+      &[data-knocked-back="1"]
+        .property[data-name="knocked-back"]
+          display block
+          position absolute
+          z-index 2
+          left 50%
+          top -25%
+          width 65%
+          aspect-ratio 1
+          transform translate(-50%, 0) scale(1, 0.6)
+          animation stunEnter 0.5s ease-out
+
+          .data
+            shadow = 0.125rem 0.125rem 0.125rem stunShadowColor
+            shadowComposite = drop-shadow(shadow) drop-shadow(shadow)
+            width 100%
+            aspect-ratio 1
+            color transparent
+            background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gscvagvq_spiral.svg)
+            background-size 100%
+            -webkit-filter shadowComposite
+            -moz-filter shadowComposite
+            -ms-filter shadowComposite
+            -o-filter shadowComposite
+            filter shadowComposite
+            animation rotation 2s linear
+            animation-iteration-count infinite
+            opacity 0.9
+
+            &:before
+              position absolute
+              top 0
+              width 100%
+              aspect-ratio 1
+              display block
+              content ""
+              mask-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gscvagvq_spiral.svg)
+              -webkit-mask-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gscvagvq_spiral.svg)
+              mask-size 100% 100%
+              -webkit-mask-size 100% 100%
+              mask-repeat no-repeat
+              -webkit-mask-repeat no-repeat
+              background-color stunColor
+
+
+    &[data-location="me-teammateHero"]
+    &[data-location="opponent-teammateHero"]
+      img
+        if SHAPE_HERO
+          border-top-left-radius 20em 30em
+          border-top-right-radius 20em 30em
+        border 2px solid grey
+
+      .property
+        &[data-name="health"]
+          display none
+        &[data-name="atk"]
+          display none
+
+    &[data-location="me-hand"]
+    &[data-location="opponent-hand"]
+      .name
+        display block
+      .property[data-name="atk"]
+      .property[data-name="health"]
+      .property[data-name="dur"]
+        display none
+      &[data-echoCopy="1"]
+        .property[data-name="echoCopy"]
+          background rgba(0,115,255,.15)
+          position absolute
+          left 0
+          top 0
+          display block
+          width 100%
+          height 100%
+          color rgba(0, 0, 0, 0)
+          border-radius 5px
+
+    &[data-location="me-hand"]
+      for num in (1..10)
+        &:nth-child({num})
+          transform rotate(-18deg + num * 3)
+      // &:first-child:not(:last-child)
+      //   transform: rotate(-15deg)
+      // &:last-child:not(:first-child)
+      //   transform: rotate(15deg)
+
+    &[data-location="me-teammateHand"]
+    &[data-location="opponent-teammateHand"]
+      .property[data-name="atk"]
+      .property[data-name="health"]
+        display none
+      .property[data-name="cost"]
+        statStyles()
+        top .1rem
+        left .05rem
+        border 1px solid costColor
+
+    &[data-location="me-afterlife"]
+    &[data-location="opponent-afterlife"]
+      .media-content
+        afterlifeShape()
+      transition 1s all
+      .property
+        display  none
+
+    &[data-location="me-playPreview"]
+    &[data-location="opponent-playPreview"]
+      opacity 1
+      transition 1s all
+      &[data-dulstclass~="Animation"]
+        transition none
+      .media-content
+        border-radius 5px
+
+    &[data-location="me-weapon"]
+    &[data-location="opponent-weapon"]
+      .media-content
+        weaponShape()
+      .property
+        &[data-name="cost"]
+          display none
+        &[data-name="dur"]
+          display block
+          left unset
+          bottom unset
+          right 0
+          top 65%
+        &[data-name="atk"]
+          right unset
+          bottom unset
+          left 0
+          top 65%
+        &[data-name="health"]
+          left unset
+          bottom unset
+          right 0
+          top 65%
+
+    &[data-location="me-heroPower"]
+    &[data-location="opponent-heroPower"]
+      transition none
+      .media-content
+        weaponShape()
+      .property
+        &[data-name="cost"]
+          display none
+        &[data-name="dur"]
+          display block
+
+    &[data-location="me-bossAction"]
+    &[data-location="opponent-bossAction"]
+      .media-content
+        weaponShape()
+      .property
+        &[data-name="cost"]
+          display none
+
+    &[data-location="me-backrow"]
+    &[data-location="opponent-backrow"]
+      .card-wrapper
+        display flex
+        justify-content center
+        align-items center
+
+      .card-inner
+        aspect-ratio 1
+        height auto
+
+        img
+          border-radius 10px
+          width 100%
+          object-fit cover
+          clip-path unset
+
+      .media-content
+        weaponShape() // Remains use same shape as weapons
+      .property[data-name="cost"]
+        display none
+      .property[data-name="dur"]
+      .property[data-name="duration"]
+        statStyles()
+        padding 0
+        width 1.6em
+        height 1.6em
+        bottom -29%
+        left 50%
+        top unset
+        right unset
+        border-radius 50%
+        display flex
+        align-items center
+        justify-content center
+        transform translateX(-50%)
+        border 2px solid durColor
+        padding-top 0.1em
+        box-sizing border-box
+        font-family "Fjalla One", sans-serif
+
+        .data
+          line-height 1
+
+      .property[data-name="duration"]
+        border-color darkBorderGradientColor
+      &[data-position="facedown"]
+        &:after
+          content "?"
+          font-weight bold
+          font-size 2rem
+          display flex
+          align-items center
+          justify-content center
+          position absolute
+          width 100%
+          aspect-ratio 1
+          height auto
+          top 50%
+          left 0
+          background rgba(0, 0, 0, .8)
+          border-radius 10px
+          color white
+          text-shadow 2px 2px black
+          font-family "Fjalla One", sans-serif
+          transform translateY(-50%)
+          box-shadow inset 0 0 8px rgba(0, 0, 0, .6)
+        &:before
+          display block
+          aspect-ratio 1
+          content ""
+          width calc(100% + 6px)
+          height auto
+          position absolute
+          background linear-gradient(to bottom, #49e0f4, #266aff)
+          top 50%
+          left -3px
+          border-radius 10px
+          z-index -1
+          transform translateY(-50%)
+        &:hover
+          &:after
+            content "Twist"
+            font-weight 400
+            font-size 1.3rem
+        .property
+          display none
+
+        .media-content
+          display none
+
+    // Card border and inner shadow
+    &[data-location="opponent-board"]
+    &[data-location="opponent-board1"]
+    &[data-location="opponent-board2"]
+    &[data-location="opponent-board3"]
+    &[data-location="me-board"]
+    &[data-location="me-board1"]
+    &[data-location="me-board2"]
+    &[data-location="me-board3"]
+      &, .card-inner
+        &:before
+          content ""
+          width calc(100% + 6px)
+          height calc(100% + 6px)
+          position absolute
+          background linear-gradient(to bottom, lightBorderGradientColor, darkBorderGradientColor)
+          clip-path ellipse(50% 50% at 50% 50%)
+          top -3px
+          left -3px
+
+        &:after
+          content ""
+          width 100%
+          height 100%
+          position absolute
+          top 0
+          left 0
+          box-shadow inset 2px 2px 10px rgba(0,0,0,.5), inset -2px -2px 10px rgba(0,0,0,.5), inset 2px -2px 10px rgba(0,0,0,.5), inset -2px 2px 10px rgba(0,0,0,.5)
+          clip-path ellipse(50% 50% at 50% 50%)
+          border-radius 50%
+
+        .card-wrapper, .properties
+          z-index 1
+
+    &[data-location="me-backrow"]
+    &[data-location="opponent-backrow"]
+      .card-inner
+        &:before
+          content ""
+          width calc(100% + 6px)
+          height calc(100% + 6px)
+          position absolute
+          background linear-gradient(to bottom, lightBorderGradientColor, darkBorderGradientColor)
+          top -3px
+          left -3px
+          border-radius 10px
+          z-index -1
+
+        &:after
+          content ""
+          width 100%
+          height 100%
+          position absolute
+          top 0
+          left 0
+          box-shadow inset 2px 2px 10px rgba(0,0,0,.5), inset -2px -2px 10px rgba(0,0,0,.5), inset 2px -2px 10px rgba(0,0,0,.5), inset -2px 2px 10px rgba(0,0,0,.5)
+          border-radius 10px
+
+        .card-wrapper, .properties
+          z-index 1
+      &[data-position="facedown"] .card-inner
+        display none
+
+    &[data-location="me-board"]
+    &[data-location="opponent-board"]
+    &[data-location="me-board1"]
+    &[data-location="opponent-board1"]
+    &[data-location="me-board2"]
+    &[data-location="opponent-board2"]
+    &[data-location="me-board3"]
+    &[data-location="opponent-board3"]
+      // Reset top level pseudo-elements if card has .card-inner.
+      &:has(.card-inner)
+        &:before, &:after
+          content none
+
+      .media-content
+        unitShape()
+
+      .property[data-name="cost"]
+        display none
+
+      keywordVisualEffectsBasic()
+        position absolute
+        display block
+        color rgba(0, 0, 0, 0)
+
+      &[data-vanguard="1"]
+        .property[data-name="vanguard"]
+          display block
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+
+          &:before, &:after, .data:before
+            content ""
+            position absolute
+            width calc(100% + 10px)
+            height calc(100% + 10px)
+            background-image linear-gradient(to bottom, lightBorderGradientColor, darkBorderGradientColor)
+            background-origin border-box
+            background-clip border-box
+            top -5px
+            left -5px
+            border-bottom-right-radius 100%
+            border-bottom-left-radius 100%
+            transform translate(-50%, -50%)
+            animation vanguardPulse 3s ease infinite
+            z-index -1
+            opacity 0
+
+          &:before
+            animation-delay 1s
+          &:after
+            animation-delay 2s
+          .data
+            color transparent
+
+      &[data-spellGuard="1"]
+        .property[data-name="spellGuard"]
+          display block
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+
+          &:before, &:after, .data:before
+            content ""
+            position absolute
+            width calc(100% + 10px)
+            height calc(100% + 10px)
+            background-image linear-gradient(to right, rgb(233,50,200), rgb(255,100,255))
+            background-origin border-box
+            background-clip border-box
+            top -5px
+            left -5px
+            border-bottom-right-radius 100%
+            border-bottom-left-radius 100%
+            transform translate(-50%, -50%)
+            animation vanguardPulse 3s ease infinite
+            z-index -1
+            opacity 0
+
+          &:before
+            animation-delay 1s
+          &:after
+            animation-delay 2s
+          .data
+            color transparent
+
+
+      &[data-summoningSickness="1"]:not([data-eligibletoattack="1"]):not([data-haste="1"]):not([data-rush="1"])
+        .property[data-name="summoningSickness"]
+          keywordVisualEffectsBasic()
+          top 0
+          left 0
+          width 100%
+          height 10rem
+          .data
+            &:after
+              summoningSickness()
+              content "z"
+              animation-delay 0s
+          &:before
+            summoningSickness()
+            content "z"
+            animation-delay 1s
+          &:after
+            summoningSickness()
+            content "z"
+            animation-delay 2s
+
+      &[data-name="armor"]
+        statStyles()
+        padding 0.35em 0.35em 0.45em 0.35em
+        width inherit
+        line-height 1.4em
+        bottom 5rem
+        right 0rem
+        filter drop-shadow(0 -5px 15px #919191)
+        background transparent
+        width 1.4em
+        background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1ck5p2pv3_greyblueshield.png)
+        background-size contain
+        background-position center center
+        background-repeat no-repeat
+        opacity 0.9
+
+      &[data-last-life="1"]
+      &[data-last-life="2"]
+      &[data-last-life="3"]
+      &[data-last-life="4"]
+      &[data-last-life="5"]
+      &[data-last-life="6"]
+      &[data-last-life="7"]
+      &[data-last-life="8"]
+        .property[data-name="last life"]
+          keywordVisualEffectsBasic()
+          background rgba(255,255,255,.01)
+          box-shadow inset 0 10px 20px 10px #FFF, inset 0 -10px 20px 10px #FFF, 0 10px 20px 10px #FFF, 0 -10px 20px 10px #FFF
+          transform scaleX(.65) scaleY(.2)
+          border-radius 100px
+          left 0
+          top -40%
+          height 0
+          width 100%
+          padding-bottom 100%
+
+      &[data-frenzy="1"]
+      &[data-frenzy="2"]
+      &[data-frenzy="3"]
+      &[data-frenzy="4"]
+        &[data-eligibletoattack="1"]
+          .card-inner
+            animation frenzy 2s infinite alternate ease-out
+
+      &[data-shield="1"]
+        .property[data-name="shield"]
+          keywordVisualEffectsBasic()
+          animation shieldEnter 1s cubic-bezier(.55,0,.1,1), shieldThrob 1.7s alternate infinite
+          z-index 1
+          filter drop-shadow(0 -5px 15px #c6e000)
+          background transparent
+          width 3.8em
+          height 4.4em
+          bottom -1.3em
+          left calc(70% - 0.75em)
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1abmn8gl0_9TpjLAETE.svg")
+          background-size cover
+          background-position center center
+          background-repeat no-repeat
+          opacity .6
+
+      &[data-IsTimeshifted="1"]
+        .property[data-name="IsTimeshifted"]
+          keywordVisualEffectsBasic()
+          animation shieldEnter 1s cubic-bezier(.55,0,.1,1), shieldThrob .5s alternate infinite
+          z-index 1
+          filter drop-shadow(0 -5px 15px #c6e000)
+          background transparent
+          left 1.5%
+          top 0%
+          width 100%
+          height 100%
+          background-image url("https://cdn.discordapp.com/attachments/416181110750576642/1000133197947994142/Time.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+          opacity 0.85
+
+      &[data-IsTimeshiftedKronii="1"]
+        .property[data-name="IsTimeshiftedKronii"]
+          keywordVisualEffectsBasic()
+          animation shieldEnter 1s cubic-bezier(.55,0,.1,1), shieldThrob .5s alternate infinite
+          z-index 1
+          filter drop-shadow(0 -5px 15px #c6e000)
+          background transparent
+          left 1.5%
+          top 0%
+          width 100%
+          height 100%
+          background-image url("https://cdn.discordapp.com/attachments/416181110750576642/1000133197646024835/Time2.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+          opacity 0.85
+
+      &[data-snipe="1"]
+        .property[data-name="snipe"]
+          keywordVisualEffectsBasic()
+          z-index 1
+          filter drop-shadow(0 0px 2px red)
+          background transparent
+          left 20%
+          bottom -15%
+          width 60%
+          height 30%
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1bflo5jja_svg-20-512.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-poison="1"]
+        .property[data-name="poison"]
+          keywordVisualEffectsBasic()
+          z-index 1
+          filter drop-shadow(0 0px 2px #008000) invert(120%) sepia() saturate(100000%) hue-rotate(40deg)
+          background transparent
+          left 20%
+          bottom -12%
+          width 60%
+          height 25%
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1ccea1ktv_noun_1581462_cc.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-magnetic="1"]
+        .property[data-name="magnetic"]
+          keywordVisualEffectsBasic()
+          z-index 1
+          background transparent
+          left 20%
+          bottom -9%
+          width 60%
+          height 25%
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2lhdfie_Magnetic_2.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-magneticLeft="positive"]
+        .property[data-name="magneticLeft"]
+          keywordVisualEffectsBasic()
+          z-index -1
+          background transparent
+          left -5em
+          bottom 0em
+          width 10em
+          height 10em
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2lj2a41_Positive_Magnet_Left.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-magneticLeft="negative"]
+        .property[data-name="magneticLeft"]
+          keywordVisualEffectsBasic()
+          z-index -1
+          background transparent
+          left -5em
+          bottom 0em
+          width 10em
+          height 10em
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2lj3abs_Negative_Magnet_Left.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-magneticRight="positive"]
+        .property[data-name="magneticRight"]
+          keywordVisualEffectsBasic()
+          z-index -1
+          background transparent
+          left 2em
+          bottom 0em
+          width 10em
+          height 10em
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2lj2e4b_Positive_Magnet_Right.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-magneticRight="negative"]
+        .property[data-name="magneticRight"]
+          keywordVisualEffectsBasic()
+          z-index -1
+          background transparent
+          left 2em
+          bottom 0em
+          width 10em
+          height 10em
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2lj3d0b_Negative_Magnet_Right.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+
+      &[data-magneticRightBound="1"]
+        .property[data-name="magneticRightBound"]
+          keywordVisualEffectsBasic()
+          z-index 1
+          background transparent
+          left 4.5em
+          bottom -0.5em
+          width 7em
+          height 10em
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2ln8tja_Equilibrium.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+        .property[data-name="magneticRight"]
+          display none
+          background transparent
+
+      &[data-magneticLeftBound="1"]
+        .property[data-name="magneticLeftBound"]
+          keywordVisualEffectsBasic()
+          z-index 1
+          background transparent
+          left -4em
+          bottom -0.5em
+          width 7em
+          height 10em
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2ln8tja_Equilibrium.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+        .property[data-name="magneticLeft"]
+          display none
+          background transparent
+
+      &[data-magneticRightBound="-1"]
+        .property[data-name="magneticRightBound"]
+          keywordVisualEffectsBasic()
+        .property[data-name="magneticRight"]
+          left 3em
+          bottom 2.5em
+          transform rotate(-90deg)
+
+      &[data-magneticLeftBound="-1"]
+        .property[data-name="magneticLeftBound"]
+          keywordVisualEffectsBasic()
+        .property[data-name="magneticLeft"]
+          left -5.5em
+          bottom -2.5em
+          transform rotate(-90deg)
+
+      &[data-hidden="1"]
+        .property[data-name="hidden"]
+          keywordVisualEffectsBasic()
+          box-shadow inset 20px 0 10px 0 rgba(0,0,0,0.1024), inset 40px 0 14px -4px rgba(0,0,0,0.128), inset 60px 0 18px -8px rgba(0,0,0,0.16), inset 80px 0 22px -12px rgba(0,0,0,0.2), inset 100px 0 26px -16px rgba(0,0,0,0.25)
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          unitShape()
+
+          &:before
+            content ""
+            animation-name spin
+            animation-duration 20000ms
+            animation-iteration-count infinite
+            animation-timing-function linear
+            position absolute
+            width 200px
+            height 200px
+            background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g551s52s_kindpng_6667876.png)
+            background-size contain
+            left -50px
+            top 10px
+            opacity 0.5
+            filter drop-shadow(10px 10px 4px rgba(255,255,255,0.2))
+
+          &:after
+            content ""
+            animation-direction reverse
+            animation-name spin
+            animation-duration 25000ms
+            animation-iteration-count infinite
+            animation-timing-function linear
+            position absolute
+            width 200px
+            height 200px
+            background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g551s52s_kindpng_6667876.png)
+            background-size contain
+            left -30px
+            top -40px
+            opacity 0.5
+            filter drop-shadow(10px 10px 4px rgba(255,255,255,0.2))
+
+      &[data-elusive="1"]
+        .property[data-name="elusive"]
+          background rgba(255,215,0,.15)
+          keywordVisualEffectsBasic()
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          unitShape()
+
+      &[data-frozen="1"]
+        .property[data-name="frozen"]
+          background rgba(0,215,255,.35)
+          keywordVisualEffectsBasic()
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          unitShape()
+
+      &[data-frozen="2"]
+        .property[data-name="frozen"]
+          background rgba(0,215,255,.75)
+          keywordVisualEffectsBasic()
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          unitShape()
+
+      &[data-burn="1"]
+      &[data-burn="2"]
+      &[data-burn="3"]
+      &[data-burn="4"]
+      &[data-burn="5"]
+      &[data-burn="6"]
+      &[data-burn="7"]
+      &[data-burn="8"]
+      &[data-burn="9"]
+      &[data-burn="10"]
+      &[data-burn="11"]
+      &[data-burn="12"]
+        .property[data-name="burn"]
+          keywordVisualEffectsBasic()
+          z-index 0
+          filter drop-shadow(0 -5px 15px #c6e000)
+          background transparent
+          left 0%
+          top 0%
+          width 100%
+          height 100%
+          background-image url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2fpcp0o_Burning.png")
+          background-size contain
+          background-position center center
+          background-repeat no-repeat
+          opacity 1
+          unitShape()
+
+      &[data-immune="1"]
+        .property[data-name="immune"]
+          keywordVisualEffectsBasic()
+          background rgba(55,155,255,.25)
+          left 0
+          top 0
+          width 100%
+          height 100%
+          border-radius 5px
+          unitShape()
+
+      &[data-legacyunit="1"]
+        .property[data-name="LegacyUnit"]
+          statStyles()
+          width 1em
+          height 1em
+          background-size contain
+          position absolute
+          background-color statBgColor
+          left 50%
+          bottom -0.7em
+          transform translate(-50%, 0)
+          border darkBorderGradientColor 2px solid
+          border-radius 50%
+          padding 6px
+
+          .data
+            --mask-url url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Skull_Icon_%28Noun_Project%29.svg/87px-Skull_Icon_%28Noun_Project%29.svg.png)
+            position absolute
+            transform translate(-50%, -50%)
+            width 70%
+            height 75%
+            top 50%
+            left 50%
+            -webkit-mask-image var(--mask-url)
+            -webkit-mask-size 100% 100%
+            -webkit-mask-repeat no-repeat
+            mask-image var(--mask-url)
+            mask-size 100% 100%
+            mask-repeat no-repeat
+            background-color legacySkullColor
+            color transparent
+
+      &[data-auraunit="1"]
+        .property[data-name="AuraUnit"]
+          display block
+          .data
+            display none
+          &:before, &:after
+            content ""
+            display block
+            width 106%
+            height 105%
+            top 50%
+            left 50%
+            position absolute
+            z-index -1
+            border-radius 50%
+            transform translate(-50%, -50%)
+            animation auraUnit 3s linear infinite
+          &:after
+            animation-delay 1.5s
+
+      &[data-knocked-back="1"]
+        .property[data-name="knocked-back"]
+          display block
+          position absolute
+          z-index 2
+          left 50%
+          top -25%
+          width 65%
+          aspect-ratio 1
+          transform translate(-50%, 0) scale(1, 0.6)
+          animation stunEnter 0.5s ease-out
+
+          .data
+            shadow = 0.125rem 0.125rem 0.125rem stunShadowColor
+            shadowComposite = drop-shadow(shadow) drop-shadow(shadow)
+            width 100%
+            aspect-ratio 1
+            color transparent
+            background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gscvagvq_spiral.svg)
+            background-size 100%
+            -webkit-filter shadowComposite
+            -moz-filter shadowComposite
+            -ms-filter shadowComposite
+            -o-filter shadowComposite
+            filter shadowComposite
+            animation rotation 2s linear
+            animation-iteration-count infinite
+            opacity 0.9
+
+            &:before
+              position absolute
+              top 0
+              width 100%
+              aspect-ratio 1
+              display block
+              content ""
+              mask-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gscvagvq_spiral.svg)
+              -webkit-mask-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gscvagvq_spiral.svg)
+              mask-size 100% 100%
+              -webkit-mask-size 100% 100%
+              mask-repeat no-repeat
+              -webkit-mask-repeat no-repeat
+              background-color stunColor
+
+    &[data-location="me-hero"]
+      &[data-eligibletoattack="1"]
+        .media-content
+          animation eligibilityAnimation
+      &[data-cannotAttack="1"]
+        margin-top 2em
+
+    &[data-location="opponent-hero"]
+      &[data-cannotAttack="1"]
+        margin-top -2em
+
+    &[data-location="me-board"]
+      &[data-eligibletoattack="1"]
+        animation eligibilityAnimation
+        &[data-haste="1"]
+          &[data-summoningSickness="1"]
+            animation eligibilityHasteAnimation
+
+    &[data-higherHealth="1"]
+       .property[data-name="health"]
+        // statStyles()
+        color greenyellow
+        text-shadow 0px 2px 0px #000000
+
+    &[data-TakenDamage="1"]
+       .property[data-name="health"]
+        // statStyles()
+        color #ff3d3d
+        text-shadow 0px 2px 0px #000000
+
+    &[data-higherAttack="1"]
+       .property[data-name="atk"]
+        // statStyles()
+        color greenyellow
+
+    &[data-lowerAttack="1"]
+       .property[data-name="atk"]
+        // statStyles()
+        color #ff3f3f
+
+    &[data-location="me-board"]
+      &[data-cannotAttack="1"]
+        margin-top 2em
+
+    &[data-location="opponent-board"]
+      &[data-cannotAttack="1"]
+        margin-top -2em
+
+    // these are two locations that aren't defined in the game logic, just a place to send cards to when you don't want to see them anymore.
+    &[data-location="opponent-hidden"]
+    &[data-location="me-hidden"]
+      img
+      .properties
+        opacity 0
+
+    &[data-visibility="hidden"]
+      visibility visible
+
+// only show eligibleToPlay highlights for that turn's player.
+body[data-turnPlayer="player1"][data-playerNumber="player1"]
+body[data-turnPlayer="player2"][data-playerNumber="player2"]
+  .card
+
+    &[data-location="me-hand"]
+      &[data-eligibleToPlay="1"]
+        perspective 400px
+        transform-style preserve-3d
+        will-change transform
+        .card-inner
+          display block
+          transform-style preserve-3d
+          width 100%
+          will-change transform
+          .media-content
+            animation eligibilityAnimation
+
+        &:hover
+          margin-top -1%
+
+        &[data-isCursed="1"]
+          .media-content
+            animation curseAnimation
+
+        &[data-TriggerActive="1"]
+          .media-content
+            animation activeTriggerAnimation
+
+// Custom UI Elements created by rule cards.
+#card-container
+  // TODO: move somewhere else
+  .card[data-title="Animation Dummy"]
+    pointer-events none
+
+  .card.animated.kiara-test
+    filter drop-shadow(0 0 10px crimson)
+
+    &:before
+    &:after
+      position absolute
+      content ""
+      width 60%
+      height 60%
+      top 0
+      background url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5rs45f4_Phoenix.png")
+      background-size: cover
+      animation-duration 0.75s
+      animation-iteration-count infinite
+    &:before
+      left -30%
+      animation-name phoenixWingLeft
+    &:after
+      right -30%
+      transform scaleX(-1)
+      animation-name phoenixWingRight
+
+  .card.animated.test-anim:before
+    background url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5497os2_Slash.png")
+    position absolute
+    content ""
+    width 192px
+    height 192px
+    left -20px
+    top -20px
+    z-index 1
+    animation-name swordSlash
+    animation-duration 0.35s
+    animation-timing-function steps(5)
+
+  .card.animated.heal:before
+    background url("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g5cv3gvv_Recovery5.png")
+    position absolute
+    content ""
+    width 192px
+    height 192px
+    left 40%
+    top 40%
+    z-index 1
+    background-position-x 0px
+    background-position-y -384px
+    animation healX 0.3s steps(5) 4,
+              healY 0.6s steps(4) 1
+    transform scale(1) translate(-50%, -50%)
+
+  .card[data-title="ui element: board overlay"]
+    position absolute
+    transition none
+    width 102rem !important
+    height 17rem !important
+    z-index 100 !important
+    pointer-events none
+    top 52rem !important
+    left 21rem !important
+    border solid 3px rgb(56, 205, 255)
+    border-radius 3rem
+    background alpha(rgb(56, 205, 255), .2)
+
+  .card[data-title="ui element: sonar"]
+    position relative
+    width 3rem !important
+    height 3rem !important
+    pointer-events none
+    transition none
+    &:after
+      z-index -1
+      padding 0
+      top 0
+      left 0
+      width 100%
+      height 100%
+      content ""
+      display block
+      position absolute
+      animation-name sonarBase, sonarStroke
+      animation-iteration-count infinite
+      animation-duration 1s
+      box-sizing content-box
+      border 1px solid rgba(255, 69, 0, 1)
+      border-radius 10rem
+
+  .card[data-dulstClass~="dialogue"]
+    height auto !important
+    z-index 2000 !important
+    .card-inner
+      .media-content
+        display none
+      border-radius 2rem
+      border .4rem solid #aaa
+      border-radius 2rem
+      background alpha(#333, .6)
+      color #fff
+      box-sizing border-box
+      text-shadow 1px 1px #444
+      box-shadow 0 0 1px rgba(76,86,103,1), 0 1px 1px rgba(31,37,50,1)
+      .property[data-name="text"]
+        display block
+    &:after
+      content " "
+      position absolute
+      border-style solid
+    &[data-dulstclass~="bottom"]
+      &:after
+        bottom 100% /* At the top of the tooltip */
+        border-color transparent transparent #b1b1b1 transparent
+    &[data-dulstclass~="top"]
+      &:after
+        top 100% /* At the bottom of the tooltip */
+        border-color #b1b1b1 transparent transparent transparent
+
+  .card[data-title="ui element: Tutorial Dialog"]
+    width 48rem !important
+    .card-inner
+      margin-top 2.5rem
+      padding 1.5rem 2rem
+      font-size 2.5rem
+      &:after
+        left 18rem
+        margin-left 3rem
+        border-width 3rem
+
+  .card[data-title="ui element: paragraph text"]
+    width 100vw !important
+    height 100vh !important
+    top 0 !important
+    left 0 !important
+    right 0 !important
+    z-index 2000 !important
+    position fixed
+    border 0
+    background linear-gradient(to bottom, rgba(0,0,0,.8) 0%, rgba(0,0,0,.6) 50%, rgba(0,0,0,0) 70%)
+    .card-inner
+      padding 12vh 20vw
+      font-size 5vh
+      box-shadow none
+      text-shadow 1px 1px 0px #444, -1px 1px 0px #444, 1px -1px 0px #444, -1px -1px 0px #444
+      background 0
+      border 0
+      border-radius 0
+      &:after
+        content "(click to continue)"
+        display block
+        font-style italic
+        margin-top 1rem
+        font-size 65%
+
+  .card[data-title="ui element: help tooltip"]
+    width 30rem !important
+    transition none
+    .card-inner
+      // margin-top 2.5rem
+      padding 1rem 1.25rem
+      font-size 2rem
+    &:after
+      margin-left 2rem
+      border-width 1rem
+      left 12rem
+    &[data-dulstClass~="reqClick"]
+      cursor pointer
+      .card-inner
+        &:after
+          content "(click to continue)"
+          display block
+          font-style italic
+          margin-top .5rem
+        &:hover
+          box-shadow 0 0 5px alpha(gold, 1)
+
+  .card[data-title="ui element: timerBar"]
+    width 1rem !important
+    position fixed !important
+    left 0 !important
+    height 100vh !important
+    bottom 0 !important
+    top auto !important
+    background red
+    animation-name timerBar
+    animation-iteration-count 1
+    animation-duration 10s
+    animation-timing-function linear
+    &[data-location="opponent-playPreview"]
+      opacity .3
+
+@keyframes floatingNumberAnim
+  0%
+    transform scale(0)
+    margin-top 0
+  10%
+    transform scale(1)
+    margin-top 0
+  90%
+    transform scale(1)
+    margin-top -2rem
+    opacity 1
+  100%
+    transform scale(1)
+    margin-top -2.2rem
+    opacity 0
+
+// Floating text. When main stats change on a card a popup appears.
+.card-change-value-container
+  font-size 3rem
+  font-weight bold
+
+  // by default don't show floating text when stats change.
+  .card-change-value
+    display none
+
+  // Do show floating text when health changes. This is floating damage.
+  .health.decrease
+    &.me-board
+    &.opponent-board
+    &.hero
+      animation unset
+      display block
+      animation-name floatingNumberAnim
+      animation-duration 2s
+      animation-iteration-count 1
+    // TODO: constantize color
+    color rgb(255, 55, 55)
+    text-shadow 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black
+    font-family Rubik, sans-serif
+    background none
+    label, .to
+      display none
+    .by
+      display block
+      &:first-letter
+        font-size 0
+    .arrow
+      display none
+
+  // Do show floating text when health changes. This is floating healing.
+  .health.increase
+    &.me-board
+    &.opponent-board
+    &.hero
+      animation unset
+      display block
+      animation-name floatingNumberAnim
+      animation-duration 2s
+      animation-iteration-count 1
+    color rgba(30, 216, 83, 1)
+    text-shadow 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black
+    font-family Rubik, sans-serif
+    background none
+    label, .to
+      display none
+    .by
+      display block
+    .arrow
+      display none
+
+
+  // show floating numbers when the counter changes.
+  .card-change-value.counter.increase
+    display block
+    color white
+    opacity 0
+    animation fadeInUpScale 1.5s
+    animation-timing-function ease-in-out
+    animation-iteration-count 2
+    animation-direction alternate
+    animation-fill-mode backwards
+    font-size 18rem
+    background transparent
+    border 0
+    label, .by
+      display none
+    .to
+      display block
+    .arrow
+      display none
+
+/*
+ * Play Interface End.
+ */
+
+
+/*
+ * Out of Game Interface.
+ */
+
+
+// Control the positioning of the game modes screen when the player is deciding which game mode to play after hitting the play a match button.
+.game-mode
+  .game-mode-inner
+    height 130%
+    width 105%
+    &:hover
+      .description
+
+        padding 0.5em
+        max-width 500px
+        margin 0 auto
+        display block
+        position fixed
+        top 2.5rem
+        left 40.6rem
+        background rgba(0,0,0,0.7)
+
+.game-modes-selector
+  width 160vh
+  max-height 1200px
+  max-width 1400px
+  .game-modes-selector
+  .grid
+    grid-template-columns \[col\] 4fr \[col\] 4fr
+    grid-template-rows \[row\] 2fr \[row\] 4fr \[row\] 12fr
+    display grid
+    grid-gap 36px
+
+.game-modes-selector *:first-child
+  grid-column 1 / span 2
+
+body:not([achievement-tutorial_win="1"])
+  if REQUIRE_TUTORIAL_COMPLETE
+    .game-modes-selector
+      overflow-y hidden
+      max-height 350px
+      max-width 800px
+      padding 0
+
+      .grid
+        display flex
+        flex-direction column
+        justify-content center
+      .game-mode:not([data-id="tutorial"])
+        display none
+      .game-mode[data-id="tutorial"]
+        height 200px
+        padding 50px
+        padding-bottom 100px
+        margin-bottom 0
+        .game-mode-inner
+          height 100%
+          width 100%
+          .gradient
+            padding 0
+            text-align center
+            display flex
+            justify-content center
+            flex-direction column
+            .title
+              position static
+              display block
+              font-size 3em
+
+  // .grid
+  //   grid-template-columns \[col\] auto \[col\] auto \[col\] auto \[col\] auto \[col\] auto \[col\] auto \[col\] auto \[col\] auto \[col\] auto
+  //   grid-template-rows \[row\] \[row\] 2fr
+  //   display grid
+  //   grid-gap 10px
+
+  // .box
+  //   margin-bottom none
+  //   height auto
+
+/*
+ * Out of Game Interface End.
+ */
+
+  // Draft Map doesn't display stats.
+#playContainer
+  .card
+    &[data-location="me-deck"]
+      .property
+        &[data-name="health"]
+          display none
+        &[data-name="atk"]
+          display none
+        &[data-name="cost"]
+          font-size 0.75em
+
+#cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+  uncollectible = 101
+  for value in uncollectible
+    &[data-value=\"{value}\"]
+      &:after
+        content "Divine"
+        background: rgba(0,255,255,1)
+        font-weight bold
+        -webkit-background-clip text
+        -webkit-text-fill-color transparent
+        visibility visible
+        position: absolute;
+      .data
+        width: 0;
+        overflow: hidden;
+        height: 1.2rem;
+
+.cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+#cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+  Legendary = 80
+  for value in Legendary
+    &[data-value=\"{value}\"]
+      text-shadow 0px 0px 4px gold, 0px 0px 8px gold
+
+      &:after
+        content "Legendary"
+        background radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%)
+        font-weight bold
+        -webkit-background-clip text
+        -webkit-text-fill-color transparent
+        visibility visible
+        position absolute
+        animation-name legendaryRarity
+        animation-duration 4s
+        animation-iteration-count infinite
+        animation-direction alternate-reverse
+        animation-timing-function ease-in
+
+      .data
+        width: 0;
+        overflow: hidden;
+        height: 1.2rem;
+
+.cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+#cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+  Epic = 60
+  for value in Epic
+    &[data-value=\"{value}\"]
+      &:after
+        content "Epic"
+        background rgba(200,50,255,1)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        visibility visible
+        position absolute
+      .data
+        width: 0;
+        overflow: hidden;
+        height: 1.2rem;
+
+.cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+#cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+  Rare = 40
+  for value in Rare
+    &[data-value=\"{value}\"]
+      &:after
+        content "Rare"
+        background rgba(50,200,255,1)
+        -webkit-background-clip text
+        -webkit-text-fill-color transparent
+        visibility visible
+        position absolute
+      .data
+        width: 0;
+        overflow: hidden;
+        height: 1.2rem;
+
+.cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+#cardFullInfo .cardDisplayInner ul.dataPane li.rarity
+  Premium = 1
+  for value in Premium
+    &[data-value=\"{value}\"]
+      background: rgba(155,255,50,1)
+
+#gameDashboard .overview
+  .terrainBackground
+    background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1fs4fah62_Front_Page_-_Standard.png) !important
+  background-size cover
+
+    .heroMedia
+      display none
+
+#gameDashboard:not(.landingPage)
+  max-width unset
+body.gameDashboard
+  background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1fs4fah62_Front_Page_-_Standard.png)
+  background-size cover
+  background-repeat no-repeat
+  #header
+    background: #161926
+
+body.gameDashboard:before
+  z-index -1
+  position absolute
+  left 0
+  top 0
+  content ""
+  opacity 0.75
+  width 100%
+  height 100%
+  background linear-gradient(134deg,rgba(30,148,133,.7) 0,rgba(28,6,120,.68) 100%), linear-gradient(-134deg,#23ae9c 0,rgba(28,6,120,.68) 100%)
+
+#gameDashboard > .gameInfo
+  color transparent
+  background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g4lt723u_Logo_3.png)
+  background-repeat no-repeat
+  background-size contain
+  margin auto
+  width 810px
+  height 285px
+
+#gameDashboard .newsItem
+  width 504px
+  flex-grow 0.33
+
+#gameDashboard div.news
+  width 100%
+  display flex
+
+  .newsItem:last-of-type
+    margin-right 0
+
+#gameDashboard
+  display flex
+  flex-flow column wrap
+
+  .news
+    order 2
+
+.dulstPlay
+ .choice-container[role="dialog"]
+   width 800px !important
+   height 500px !important
+   border 10px solid transparent
+   border-image url() 30 stretch
+   background-color rgba(0,0,0,0.5)
+   background-image url()
+   background-size cover
+   backgroundClip contain-box
+   background-repeat no-repeat
+   background-position center
+   color white
+
+  .ui-widget-content
+    width 718px !important
+    height 660px !important
+    border 2px solid transparent
+
+ .ui-dialog-titlebar
+   background transparent
+   color white
+   font-family verdana
+   padding 3% 3% 5% 36%
+
+ .choice-container button
+   width auto
+   height auto
+   border 2px solid transparent
+   color white
+   font-weight bold
+   position relative
+
+#gameResults
+  margin-top 175px !important
+  .lose
+    width 43em !important
+    height 8em !important
+    border-color transparent !important
+    box-shadow none !important
+    background transparent !important
+    color transparent !important
+    border 0px solid red !important
+    background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g0sekfsl_Hololive_Defeat.png) !important
+    background-size contain !important
+    background-position center !important
+    background-repeat no-repeat !important
+
+  .win
+    width 43em !important
+    height 8em !important
+    border-color transparent !important
+    box-shadow none !important
+    background transparent !important
+    color transparent !important
+    border 0px solid red !important
+    background-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g0sekasu_Hololive_Victory.png) !important
+    background-size contain !important
+    background-position center !important
+    background-repeat no-repeat !important
+
+#main, #chatPane, #header, body.gameDashboard #wrapper, #CardsInAList #card-list-container, #gameResults
+  cursor url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g0sek4j6_Hololive_Cursor.png?2),auto
+
+/*
+ * Custom Background
+ */
+FieldBGS = {
+  "Ocean": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g3djp829_AciYM8R.jpg)
+  "TimeRealm": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1fq3simsu_95227178_p0_master1200.jpg)
+  "Underworld": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g3lv0994_98003317_p0_master1200.jpg)
+  "Raveyard": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1folaoqvd_85362154_p0_master1200.jpg)
+  "Yha": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1folnut0g_2c76787ff56e453b45636d68aa0918cc664e0bed.png)
+  "Heat": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqk227_90055534_p0_master1200.jpg)
+  "Abyss": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1foh4sbbm_95240628_p0_master1200.jpg)
+  "Aurora": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1fs21s0s9_94905849_p0_master1200.jpg)
+  "AncientShrine": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1foln8qlv_Human_Ina_1.png)
+  "Garden": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcImage/1fpskvkqm_93424041_p0_master1200.jpg)
+  "Space": url(https://cdn.discordapp.com/attachments/416181110750576642/1003708236303704064/D2YP5VNBIJGXVCEC66MLUFZPIA.jpeg)
+  "Void": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1gqhusg7r_Darkness.png)
+  "Scenario_Noteblox": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1hc2gls0n_spooky-graveyard-with-full-moon-it_662214-58559.avif)
+}
+
+body
+  for key, value in FieldBGS
+    &[data-property-game-FieldBG=\"{key}\"]
+        background-image value
+        transition 2s all
+
+BossModeBGS = {
+  "Sana": url(https://cdn.discordapp.com/attachments/416181110750576642/1003708236303704064/D2YP5VNBIJGXVCEC66MLUFZPIA.jpeg)
+}
+
+body
+  &[data-gamemode="arc-bossMode"]
+    for key, value in BossModeBGS
+      &[data-property-me-BossBG=\"{key}\"]
+          background-image value
+
+KaijuuCrisisBGS = {
+  "1": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqj1di_40416992_p0_master1200.jpg)
+  "2": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqk227_90055534_p0_master1200.jpg)
+  "3": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqkidt_88202505_p0_master1200.jpg)
+  "4": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g3djp829_AciYM8R.jpg)
+  "5": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g3djp829_AciYM8R.jpg)
+  "6": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g3lt7m7o_nature-digital-dragon-field-landscape-graveyards-1768175-wallhere.com.jpg)
+  "7": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g3djp829_AciYM8R.jpg)
+  "8": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+  "9": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+}
+
+body
+  &[data-gamemode="KaijuuCrisis"]
+    for key, value in KaijuuCrisisBGS
+      &[data-property-me-KaijuBG=\"{key}\"]
+          background-image value
+/*
+ * Custom Background
+ */
+
+/*
+ * Leftover Code
+ */
+
+KaijuuCrisissBGS = {
+  "0": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqj1di_40416992_p0_master1200.jpg)
+  "1": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqkidt_88202505_p0_master1200.jpg)
+  "2": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqk227_90055534_p0_master1200.jpg)
+  "3": url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1g2iqkidt_88202505_p0_master1200.jpg)
+  "4": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+  "5": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+  "6": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+  "7": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+  "8": url(https://d2t4fc8ff77neh.cloudfront.net/gameBackDrop/1g1vlctoe_istockphoto-1188598649-612x612.jpg)
+}
+
+body
+  &[data-gamemode="KaijuuCrissis"]
+    for key, value in KaijuuCrisisBGS
+      &[data-property-me-kaijuucrisiswins=\"{key}\"]
+          background-image value
+
+/*
+ * Leftover Code
+ */
+
+// TODO: combine with collection page stylings.
+#cardFullInfo, .cardFullInfo
+  for key1, value1 in cardTitleColorRules
+    for key2, value2 in cardTitleColorRules
+      if key1 == key2
+        &[data-source^=\"{key1}\"], &[data-reqsource^=\"{key1}\"]
+          .name
+            background: linear-gradient(270deg, value1["backgroundColor"], value1["backgroundJoinColor"], value1["backgroundColor"])
+            border-top-color: value1["topBorderColor"]
+            border-bottom-color: value1["bottomBorderColor"]
+
+          ul.dataPane .secondaryProperties
+          ul.dataPane li.effect
+          ul.dataPane li.desc
+            border-image: linear-gradient(to right, transparent, value1["bottomBorderColor"], value1["topBorderColor"], value1["bottomBorderColor"], transparent) 1
+      else
+        &[data-source^=\"{key1}\"][data-source*=\"{key2}\"], &[data-reqsource^=\"{key1}\"][data-reqsource*=\"{key2}\"]
+          .name
+            background: linear-gradient(90deg, value1["backgroundColor"], rgba(255,255,255,0.3), value2["backgroundColor"])
+            border-top-color: value1["topBorderColor"]
+            border-bottom-color: value2["bottomBorderColor"]
+
+          ul.dataPane .secondaryProperties
+          ul.dataPane li.effect
+          ul.dataPane li.desc
+            border-image: linear-gradient(to right, transparent, value1["backgroundColor"], value1["backgroundColor"], value2["backgroundColor"], value2["backgroundColor"], transparent) 1
+
+  // for key, value in classColors
+  //   for key2, value2 in classColors
+  //     unless key == key2
+  //       &[data-source^=\"{key}\"][data-source*=\"{key2}\"], &[data-reqsource^=\"{key}\"][data-reqsource*=\"{key2}\"]
+  //         .name // Card Title
+  //           color value
+  //         .name   // Top Border
+  //           border-top 3px solid value
+  //           border-image linear-gradient(to right, value, value2) 1
+  //         .image, .video  // Bottom border
+  //           border-bottom 2px solid value
+  //           border-image linear-gradient(to right, value, value2) 1
+
+.dataPane .desc .data {
+  font-style italic
+  font-size 0.9em
+  cite {
+    align-self end
+  }
+}
+
+// Hide Help button
+#chatPane a.closedPlaceholder
+  display none
+
+// Custom UI elements
+
+.customSelect
+  background #FDFEFE
+  padding 0.5rem 1rem
+  color black
+  border 1px solid rgba(116, 71, 205, .2)
+  text-transform uppercase
+  letter-spacing 2px
+  line-height 1em
+  border-radius 60px
+  cursor pointer
+  font-size 10px
+  margin 0
+
+  &:hover
+    border 1px solid #3498DB
+
+  option
+    text-align left
+    font-size 1rem
+    line-height 1.5
+    text-transform capitalize
+
+// Deck builder screen
+// TODO: extract to separate file.
+
+#wrapper:has(#decksContainer), #wrapper:has(#cardsList)
+  overflow hidden
+
+#main
+  height calc(100vh - 80px)
+  background-image url(https://hololive.hololivepro.com/wp-content/themes/hololive/images/fixed_bg.jpg)
+  background-size cover
+  background-repeat no-repeat
+  &:has(#gameDashboard), &:has(#playContainer)
+    background-image revert
+
+#cardsList.page
+  padding-top 1.5rem
+
+#decksContainer.page, #cardsList.page, #main > .content:empty
+  height 100%
+  display flex
+  flex-direction column
+  box-sizing border-box
+  padding-bottom 1rem
+
+  header.page
+    display none
+
+  .filters .sortBy
+    display none
+
+  // &:before
+  //   position absolute
+  //   content "Loading..."
+  //   height 20vh
+  //   aspect-ratio 0.9
+  //   background url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Hololive_Alternative_Icon.svg/277px-Hololive_Alternative_Icon.svg.png)
+  //   background-size contain
+  //   background-repeat no-repeat
+  //   opacity 0
+  //   transition opacity 0.5s
+  //   top 50%
+  //   left 50%
+  //   transform translate(-50%, -50%)
+  //   z-index 2
+  //   color white
+  //   display flex
+  //   align-items center
+  //   justify-content center
+  //   font-size 20px
+  //   text-shadow 2px 2px black
+  //   pointer-events none
+
+  // &:has(#CardsInAList:empty)
+  //   pointer-events none
+  //   &:before
+  //     opacity 1
+  //   #CardsInAList
+  //     opacity 0
+
+  #CardsInAList
+    flex 1
+    display flex
+    overflow hidden
+    padding-top 1.5rem
+    opacity 1
+    transition opacity 0.5s
+
+    #deckView
+      order 1
+      position unset
+      display flex
+      flex-direction column
+      gap 1rem
+      height unset
+      padding 2rem 1rem
+      background #F2F3F4
+      border-radius 1rem
+      box-sizing border-box
+      width 364px
+      min-width 364px
+
+      aside
+        flex 1
+        display flex
+        flex-direction column
+        gap 1rem
+        height unset
+        background #F2F3F4
+
+        header.deck
+          padding 0
+          input
+            padding 0.5rem
+            width: 100%;
+            box-sizing: border-box;
+            &:focus-visible, &:focus
+              background: white;
+              border-radius: 6px;
+              border: 1px solid grey;
+
+      .deckControls
+        gap 1rem
+        height unset
+        padding-top 0
+
+        .switch
+          margin-right unset
+          flex 1
+          z-index unset
+
+          #decksList
+            z-index 2
+
+        .button
+          white-space nowrap
+          overflow hidden
+          padding 1rem
+          flex 1
+          height unset
+          background white
+          transition: .3s;
+          &:hover
+            background #27c7ff
+
+        .fieldLike
+          display none
+
+      #deck-container
+        flex 1
+        display flex
+        flex-direction column
+        overflow hidden
+        gap 0.5rem
+        height unset
+        padding 0
+
+        header
+          order 1
+        .mainCards
+          order 2
+          overflow-y scroll
+        footer
+          order 3
+          margin-top auto
+          .cardStats
+            position unset
+            padding 0
+            ul
+              display grid
+              gap 0.25rem
+              grid-auto-columns auto auto auto
+              & > *
+                display none
+                a
+                  padding 0
+                  span
+                    max-width unset
+
+              li.totalcards
+                position unset
+                width unset
+                line-height unset
+                height unset
+                text-align unset
+                display block
+                grid-column-start 1
+                grid-column-end 4
+                background unset
+
+              &:before
+                content none
+
+        .list-container
+          margin-bottom 0
+
+          h5
+            display none
+
+          .card-list-container
+            display flex
+            flex-direction column
+
+          for num in (0..15)
+            .card:has(.properties div[data-name="cost"][data-value=\"{num}\"])
+              order num
+
+          .card:first-child
+            border 0
+
+        .card
+          height 40px
+          margin-bottom 2px
+          padding 0px 10px
+          background #fff
+          background-image linear-gradient(90deg, #707B7C, #E5E8E8)
+          border-bottom-left-radius 0.5rem
+          border-top-left-radius 0.5rem
+          justify-content start
+          transition visibility .3s
+
+          &:hover
+            transform unset
+            -webkit-transform unset
+            -moz-transform unset
+            -o-transform unset
+
+            img
+              width 65%
+            .name
+              letter-spacing 0.5px
+
+          for key1, value1 in cardTitleDeckListColors
+            for key2, value2 in cardTitleDeckListColors
+              if key1 == key2
+                &:has(div[data-value=\"{key1}\"])
+                  background-image linear-gradient(90deg, value1, #E5E8E8)
+              else
+                &:has(div[data-value^=\"{key1}\"][data-value*=\"{key2}\"])
+                  background-image linear-gradient(90deg, value1, value2, #E5E8E8)
+
+          img
+            position absolute
+            width 60%
+            height 100%
+            object-fit cover
+            top 0
+            right 0
+            mask-image linear-gradient(to left, rgba(0, 0, 0, 1), 70%, rgba(0, 0, 0, 0))
+
+            &[alt="Reap"], &[alt="Scythe of Death"]
+              object-position 100% 5%
+            &[alt="Captain Shirogane"], &[alt="Ebony Spellblade"], &[alt="Portal Trooper"],
+            &[alt="Ghost of Darkness Reimu Endou"], &[alt="Possessed Idol"], &[alt="Praying Luknight"],
+            &[alt="Lulu Hunter"], &[alt="Advance"], &[alt="Disturbed Love Drug"], &[alt="Ancient Cultist"],
+            &[alt="Milord Vox Akuma"], &[alt="Spellshaper"]
+              object-position 100% 15%
+            &[alt="Pekolauncher"], &[alt="Ritual of The Blade"], &[alt="Red Eyes Black Dragon"], &[alt="Parkour"],
+            &[alt="Coexistance"], &[alt="Dinner's Served"], &[alt="Treachery"], &[alt="Merrow Myrmidon"],
+            &[alt="The Sharkborn"], &[alt="Extraterrestial"], &[alt="Half Dragon"], &[alt="Motivator"],
+            &[alt="Rally"], &[alt="Dog Clubber"], &[alt="Tokoyami"], &[alt="Grim Reaper Apprentice"],
+            &[alt="Battery Charger"], &[alt="Weaving of Fate"], &[alt="Night Gaunt"], &[alt="Dark Lightning"],
+            &[alt="Reliable Secretary"], &[alt="Venerable Bodyguard"], &[alt="Apostle of The Ancient One"],
+            &[alt="Full Moon Form Juniper Actias"], &[alt="The Ancient One"], &[alt="Queen of The Moon"]
+              object-position 100% 20%
+            &[alt="Carrot Missile"], &[alt="Gunshi Dream"], &[alt="Mace Slam"], &[alt="Robo Punch"], &[alt="Oni Senshi"],
+            &[alt="Denki"], &[alt="Block Displacement"], &[alt="Give Up"], &[alt="Pearly Whites"], &[alt="Scary Dog"],
+            &[alt="Trapmaster Pekora"], &[alt="Spirit Walker"], &[alt="Monster Sheep"], &[alt="Skinship"],
+            &[alt="Terrifying Presence"], &[alt="Holy Assassin"], &[alt="Kazama Kenshin"], &[alt="Amane Kanata"],
+            &[alt="Shiranui Kenshin"], &[alt="Holy Power"], &[alt="Cunning Ranger"], &[alt="Sealed Akuma"],
+            &[alt="Ojou"], &[alt="Ranger's Guile"], &[alt="Behind Bars"], &[alt=".50 Cal Sniper"], &[alt="Ignition"],
+            &[alt="Virtual Diva"], &[alt="Death Maid"], &[alt="Cheerful Colonel"], &[alt="Natural Allure"],
+            &[alt="Possessive Ghoul"], &[alt="Gruesome Gourmet"], &[alt="Reality Slash"], &[alt="Heal Pulse"],
+            &[alt="Super Duperize"], &[alt="Electric Shock"], &[alt="Necromancy Specialist"], &[alt="Onigirya Queen Nekomata Okayu"],
+            &[alt="Berry Collector"], &[alt="Manic Study"], &[alt="Wayward Samurai"], &[alt="Blademaster"],
+            &[alt="Archangel"], &[alt="Great Archer"], &[alt="Hitman"], &[alt="FBK Prinny"], &[alt="Corpse Idol"],
+            &[alt="Chaotic Shape"], &[alt="Adidas Coco"], &[alt="Great Drake"], &[alt="Danchou"], &[alt="Firebird"],
+            &[alt="Rookie"], &[alt="Mourn Wave"], &[alt="Death Metal"], &[alt="Hot Maid"], &[alt="Flaming Blade"],
+            &[alt="Harbinger"], &[alt="Laplace's Demon"], &[alt="Eminent Lightreaver"], &[alt="Heed My Call"],
+            &[alt="War Hawk"], &[alt="The Executive Officer Takane Lui"], &[alt="Sakamata Chloe Herald of Darkness"],
+            &[alt="Jailbreaker"], &[alt="Shadow Clone"], &[alt="Hyperfocus"], &[alt="Ninpo Arts"],
+            &[alt="Deranged Researcher Hakui Koyori"], &[alt="Paradoxical Outcome"], &[alt="Defense Protocol"],
+            &[alt="Cosmic Wizard"], &[alt="Sheep Queen Watame"], &[alt="Playful Vampire"], &[alt="Devil Maid"],
+            &[alt="Hellhound"], &[alt="Denied By Death"]
+              object-position 100% 25%
+            &[alt="Onion"], &[alt="Usada Pekora"], &[alt="Sweet Baker"], &[alt="City Guard"], &[alt="Psycho"], &[alt="Tsukumo"],
+            &[alt="Javelin"], &[alt="Flash Carve"], &[alt="Tsujigiri"], &[alt="Aid Me"], &[alt="Resourceless"], &[alt="Oka"],
+            &[alt="Bloodlust"], &[alt="Catfish"], &[alt="Power Stance"], &[alt="Holy Arrow"], &[alt="Shark Guard"],
+            &[alt="Atlantean Princess"], &[alt="Neophyte"], &[alt="Pekoknight"], &[alt="Lion Launcher"],
+            &[alt="Firestarter"], &[alt="Mama Ui"], &[alt="Gift of The Duck"], &[alt="Eroge"], &[alt="Demon Lord"],
+            &[alt="Extra Terrestrial Airani Iofi"], &[alt="Zombie Knight"], &[alt="Sakura"], &[alt="Casual Finana"],
+            &[alt="Interstellar Voyager"], &[alt="Friend"], &[alt="Hoshinova"], &[alt="Snow Ball"], &[alt="Chained Lightning"],
+            &[alt="Guidelight Owl"], &[alt="Nekomata Café"], &[alt="Nakiri Ayame"], &[alt="Dagger Girl"],
+            &[alt="Gamer Fox Fubuki"], &[alt="Dark Magician Girl"], &[alt="Ruthless Cowboy"], &[alt="Queen of The Elves Aki Rosenthal"],
+            &[alt="The Dark Soul"], &[alt="Mukirose"], &[alt="Amane Kanata The Archangel"], &[alt="Undead Bride"],
+            &[alt="Hoarding Drake"], &[alt="Great Coco"], &[alt="Random Subaru"], &[alt="Harp Player"], &[alt="Amane"],
+            &[alt="Uruha"], &[alt="Tricky Magician"], &[alt="Supportive Orca"], &[alt="Lethal Stabbing"],
+            &[alt="Eldritch Ear Clearing"], &[alt="Death Girl"], &[alt="Lunar Princess"], &[alt="Ender Miko"],
+            &[alt="Laplus Dia Highest Emperor Darknesss"], &[alt="Exiguous Overlord"], &[alt="Executive Officer"],
+            &[alt="Aspect of The Hawk"], &[alt="Skulker Wraith"], &[alt="Fan of Knives"], &[alt="Honorable Duelist Kazama Iroha"],
+            &[alt="Resolute Warrior"], &[alt="Samurai Troupe"], &[alt="Art Student"], &[alt="Violet Summoner"],
+            &[alt="Nephilim"], &[alt="Talent Manager"]
+              object-position 100% 30%
+            &[alt="Scheming Pekora"], &[alt="Fox Guardian"], &[alt="Oni Girl"], &[alt="Half-Elf Archer"], &[alt="Jason Coco"],
+            &[alt="Super Chat Attack"], &[alt="Bring Back"], &[alt="Haachama Rampage"], &[alt="Sharkie [Reflected]"],
+            &[alt="Usaken Excavation"], &[alt="Police Report"], &[alt="Koronesuki Queen Inugami Korone"],
+            &[alt="Pharao"], &[alt="Galactic Baby"], &[alt="Mother Nature"], &[alt="Hyper Mega Idol Momosuzu Nene"],
+            &[alt="Juice Break"], &[alt="Flex"], &[alt="Despair Breaker"], &[alt="Draw"], &[alt="Comet Flame"],
+            &[alt="Casual Pekora"], &[alt="Bodyguards of The Kaichou"], &[alt="Murdering Intent"],
+            &[alt="Fearless Veteran"], &[alt="Drunken Spirit"], &[alt="Police Officer"], &[alt="Dangerous Person"],
+            &[alt="Helping Hand"], &[alt="Field Officer"], &[alt="Bouncer"], &[alt="Owl Maid"], &[alt="Fuwa Fuwa"],
+            &[alt="Olivia"], &[alt="Casual Succubus"], &[alt="Shark Ghast"], &[alt="Late Night Snack"],
+            &[alt="Yuzuki Choco"], &[alt="Kaiju"], &[alt="Scorching Avalanche Takanashi Kiara"], &[alt="Hawkeye Recruiter"],
+            &[alt="Phoenix Blade"], &[alt="Pekomoon"], &[alt="Animal Scientist"], &[alt="Laplus Darknesss"],
+            &[alt="Malignant Extirpation"], &[alt="Takane Lui"], &[alt="Spiritbreaker"], &[alt="Classy Initiator"],
+            &[alt="Warrior of The Hawk"], &[alt="Intern"], &[alt="Emergency Communicator"], &[alt="Kazama Iroha"],
+            &[alt="Hour of Destiny"], &[alt="Hakui Koyori"], &[alt="Dubious Tester"], &[alt="Hour of Ascendance"],
+            &[alt="Ouro Kronii"], &[alt="Ceres Fauna"]
+              object-position 100% 35%
+            &[alt="Emergency Rations"], &[alt="Shiranui Flare"], &[alt="Recuperation"], &[alt="Eldritch Artist"],
+            &[alt="Doggo Delarge"], &[alt="Fucking Cute Wolf"], &[alt="Nut Gun"], &[alt="[Asacoco] Kiryu Coco"],
+            &[alt="Outlawed Exile"], &[alt="Elven Archery"], &[alt="Cross Slash"], &[alt="Casual Amelia"],
+            &[alt="Lion Corps"], &[alt="Snow Gun"], &[alt="Early Sora"], &[alt="Shirakami Fubuki"], &[alt="AZKi"],
+            &[alt="Eldritch Grip"], &[alt="Spell Bolt"], &[alt="Nanashi Mumei"], &[alt="Monster Hunter"],
+            &[alt="Debi"], &[alt="Drake"], &[alt="Flamecannon"], &[alt="Disassemble"], &[alt="Tentacle Swarm"],
+            &[alt="Sanity Check"], &[alt="Mini Lion"], &[alt="Takanashi Kiara"], &[alt="Yes My Dark!"],
+            &[alt="Synchronized Magic"], &[alt="Hour of Domination"], &[alt="Sakamata Chloe"],
+            &[alt="Cleaning Crew"], &[alt="Devious Janitor"], &[alt="Wraith's Mask"], &[alt="Careless Professor"],
+            &[alt="Mass Experiment"], &[alt="Ninomae Ina'nis"], &[alt="Eldritch Priestess"],
+            &[alt="Otherworldly Nurse"], &[alt="Octopus Lady"], &[alt="Succubus Scholar"], &[alt="Demon Realm"],
+            &[alt="Nanashi Mumei"], &[alt="Fire Monster"]
+              object-position 100% 40%
+            &[alt="Finana Ryugu"], &[alt="Haachama Cooking"], &[alt="Rosenthal Crown"], &[alt="History Scholar"],
+            &[alt="Sharkie"], &[alt="Omaru Polka"], &[alt="Charming Horror"], &[alt="Necromaniac"],
+            &[alt="Phantom Diver"], &[alt="Nanashi Mumei"]
+              object-position 100% 45%
+            &[alt="Chama-Chama"], &[alt="Serial Fishing"], &[alt="300k Subs Vtuber"], &[alt="Ebifrion"],
+            &[alt="Korone's Dark Side"], &[alt="Blessing of The Ocean"], &[alt="Demon Slayer"],
+            &[alt="Lost"], &[alt="Bird of Prey"], &[alt="Job Offer"]
+              object-position 100% 60%
+            &[alt="Guilty"], &[alt="Ultimate Defense"], &[alt="Oni Slash"], &[alt="Fire Extinguisher"],
+            &[alt="Recon"], &[alt="Love Bombing"]
+              object-position 100% 65%
+            &[alt="UsaKen Shachou Usada Pekora"], &[alt="Burial Site"], &[alt="Hour of Darkness"],
+            &[alt="Umbral Point Blast"]
+              object-position 100% 75%
+            &[alt="Restore"]
+              object-position 100% 85%
+
+          .name
+            margin-left 2.5rem
+            font-size 14px
+            font-family "Yu Gothic Medium", sans-serif
+            color white
+            z-index 1
+            text-shadow 1px 1px rgba(0,0,0,.7), -1px 1px rgba(0,0,0,.7), 1px -1px rgba(0,0,0,.7), -1px -1px rgba(0,0,0,.7)
+            transition letter-spacing .3s
+            padding-left 2px
+
+          &.hero
+            &:before
+              content ''
+              margin 0
+              background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i2cghi8u_crown.png)
+              background-size 85% 100%
+              background-position center
+              background-repeat no-repeat
+              width 2.5rem
+              aspect-ratio 1
+              position absolute
+              top 0
+              left 1%
+              z-index 1
+              opacity 1
+              height auto
+              transform unset
+              filter drop-shadow(2px 2px 3px #000)
+            &:after
+              content ''
+              mask-image url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i2cghi8u_crown.png)
+              mask-size 85% 100%
+              mask-position center
+              mask-repeat no-repeat
+              width 2.5rem
+              aspect-ratio 1
+              background linear-gradient(0deg, gold, orange)
+              position absolute
+              top 0
+              left 1%
+              z-index 1
+              opacity 1
+              height auto
+              transform unset
+
+            .count
+              display none
+
+          .count
+            &:before
+              content 'x'
+              font-size 11px
+            line-height unset
+            position unset
+            height 100%
+            width unset
+            margin unset
+            margin-right -10px
+            margin-left auto
+            border-radius 0
+            display flex
+            justify-content center
+            align-items center
+            background rgba(0, 0, 0, 0.4)
+            padding 0 0.5rem
+
+          .properties
+            display block
+
+            *
+              display none
+
+            div[data-name="cost"]
+              z-index 1
+              display flex
+              position absolute
+              align-items center
+              justify-content center
+              background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i226k5fh_manaGem_polished_small_ver.png)
+              background-size cover
+              background-position center
+              background-repeat no-repeat
+              text-shadow 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+              color white
+              font-family "Fjalla One", sans-serif
+              font-size 1.5rem
+              font-weight bold
+              line-height 1
+              box-sizing border-box
+              width 2.3rem
+              aspect-ratio 1
+              top 2%
+              left 1%
+              filter drop-shadow(2px 2px 3px #000)
+              font-size 1.3rem
+              padding-top 0.1rem
+
+        &:has(.mainCards .card[data-type="unit"]) footer li.unit
+          display revert
+        &:has(.mainCards .card[data-type="spell"]) footer li.spell
+          display revert
+        &:has(.mainCards .card[data-type="equip"]) footer li.equip
+          display revert
+
+  #libraryCards
+    padding-left 0
+
+  #card-list-container
+    & > .mainCards h5
+    display flex
+
+    a.linkToTypeEdit
+      display flex
+      align-items center
+      i
+        line-height unset
+
+    .cardsListSort
+      h2
+        font-family Rubik, sans-serif
+        letter-spacing 1px
+        cursor revert
+        &:after
+          content unset
+      .popoverTarget
+        display none
+
+    .filters
+      display flex
+      gap 1rem
+
+    .ruleCardVisibility
+      height 100%
+      .rule.list-container
+        overflow-y scroll
+
+    .mainCards
+      overflow-y scroll
+      flex 1
+
+      .list-container
+        padding-right 1rem
+        // display none !important
+
+        // &:has(.card.visible)
+        //   display block !important
+
+      .card-list-container
+        display flex
+        gap 2.5rem
+        flex-wrap wrap
+        padding 1rem
+        padding-bottom 2rem
+
+        .cardsListSort .cardStats h2
+          font-family Rubik, sans-serif
+          letter-spacing 1px
+
+        .card
+          width 140px
+          aspect-ratio 25/31
+          padding 0
+          box-shadow #000 2px 2px 8px
+          overflow unset
+          border-radius 6px
+          // display none
+          display flex
+          align-items center
+          justify-content center
+          transition all 0.3s ease-in-out
+
+          // &.visible
+          //   display flex
+
+          &.countzero
+            opacity 0.3
+            img
+              opacity unset
+
+          &:hover
+            transform unset
+            -webkit-transform unset
+            -moz-transform unset
+            -o-transform unset
+
+            &:not(.countzero)
+              transform scale(1.05)
+              -webkit-transform scale(1.05)
+              -moz-transform scale(1.05)
+              -o-transform scale (1.05)
+              box-shadow #000 3px 3px 12px
+
+          &:before
+            margin unset
+            left unset
+            top unset
+            align-content center
+            background dodgerblue
+
+          &[data-type="hero"] .count
+            display none
+
+          .count
+            top unset
+            right unset
+            bottom -0.75rem
+            margin-left unset
+            background rgba(34, 18, 65, .9)
+            &:before
+              content "x"
+              font-size 11px
+
+          img
+            width 100%
+            height 100%
+            object-fit cover
+            border-radius 6px
+
+          .mask
+            border-radius 6px
+
+          .name
+            bottom unset
+            top 5px
+            width 100%
+            left unset
+            padding 0.25rem
+            box-sizing border-box
+            text-shadow black 1px 1px
+            text-align right
+            right 0
+            font-size 12px
+            background linear-gradient(270deg, rgba(33, 47, 60, 0.8), rgba(33, 47, 60, 0.4), rgba(33, 47, 60, 0.8))
+            padding 0px 0.5rem 0 2.5rem
+            border-top 1px solid #A6ACAF
+            border-bottom 1px solid #212F3C
+            z-index 0
+            line-height 1.5
+            border-top-right-radius 2px
+
+            p
+              display inline
+              &:before
+                content ' '
+
+          &:has(.properties .cost:empty), &.hero, &.draftPack
+            .name
+              padding-left 0.5rem
+              text-align center
+
+          for key1, value1 in cardTitleColorRules
+            for key2, value2 in cardTitleColorRules
+              if key1 == key2
+                &:has(div[data-value=\"{key1}\"]) .name
+                  background: linear-gradient(270deg, value1["backgroundColor"], value1["backgroundJoinColor"], value1["backgroundColor"])
+                  border-top-color: value1["topBorderColor"]
+                  border-bottom-color: value1["bottomBorderColor"]
+              else
+                &:has(div[data-value^=\"{key1}\"][data-value*=\"{key2}\"]) .name
+                  background: linear-gradient(90deg, value1["backgroundColor"], rgba(255,255,255,0.3), value2["backgroundColor"])
+                  border-top-color: value1["topBorderColor"]
+                  border-bottom-color: value2["bottomBorderColor"]
+
+          .properties
+            display block
+            height 0
+
+            & > *
+              display none
+
+            div[data-name="health"], div[data-name="dur"], div[data-name="atk"]
+              display flex
+              position absolute
+              border-radius 50%
+              background rgba(0, 0, 0, 0.8)
+              color #fff
+              font-family "Fjalla One", sans-serif
+              font-size 1.5rem
+              font-weight bold
+              line-height 1
+              box-sizing border-box
+              width 2.5rem
+              aspect-ratio 1
+              overflow visible
+              border 2px solid transparent
+              display flex
+              align-items center
+              justify-content center
+              padding-top 1px
+              text-shadow 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+              box-shadow #000 3px 3px 8px
+              z-index 1
+
+            div[data-name="dur"]
+              border-color durColor
+              bottom -3%
+              right -5%
+            div[data-name="health"]
+              border-color healthColor
+              bottom -3%
+              right -5%
+            div[data-name="atk"]
+              border-color atkColor
+              bottom -3%
+              left -6%
+
+            div[data-name="cost"]
+              z-index 1
+              display flex
+              position absolute
+              align-items center
+              justify-content center
+              background url(https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1i226k5fh_manaGem_polished_small_ver.png)
+              background-size cover
+              background-position center
+              background-repeat no-repeat
+              text-shadow 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+              color white
+              font-family "Fjalla One", sans-serif
+              font-size 1.5rem
+              font-weight bold
+              line-height 1
+              box-sizing border-box
+              width 2.7rem
+              aspect-ratio 1
+              top -4%
+              left -7%
+              filter drop-shadow(2px 2px 3px #000)
+              font-size 1.5rem
+              padding-top 0.1rem
+
+              &:empty
+                display none
+
+          &.hero div[data-name="atk"][data-value="0"]
+            display none
+
+    .mainCards .list-container h5
+      line-height 1.3
+      font-family "Yu Gothic Medium", sans-serif
+      font-weight bold
+      font-optical-sizing auto
+      font-size 20px
+      text-transform uppercase
+      padding 10px 10px 10px 25px
+      line-height 1.3
+      color #fff
+      border-radius 100px
+      margin 2.8em 0 1em
+      background-image linear-gradient(90deg, #4D9EED, #75E5EF)
+      margin-top 0
+
+  #card-list-container
+    height 100%
+    display flex
+    flex-direction column
+
+    .cardsListSort
+      padding-top 0
+
+    .card-list-container
+      cursor revert
+
+  .card-list-container .card .mask, .card-list-container .card-preview .mask
+    background-image linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 80%, rgba(19, 11, 43, 0.2) 88%, rgba(19, 11, 43, 0.4) 95%, rgba(19, 11, 43, 0.8) 100%)
+    width 100%
+    height calc(100% + 1px)
+
+#marketContainer
+  .cards .card
+    & > .mask:first-child
+      display none
+    .mask
+      z-index 0 !important
+    .buyBooster
+      position absolute
+      width 100%
+      height 100%
+      box-sizing border-box
+      text-shadow: 1px 1px black;
+
+.clonedAnimation
+  object-fit cover
+
+#statusMessage > *
+  font-size 2rem !important
+
+#card-properties.viewMode .switchView
+  margin-top 4rem

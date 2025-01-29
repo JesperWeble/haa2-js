@@ -1,0 +1,1 @@
+cards page: atk no longer shows if value is undefined.
